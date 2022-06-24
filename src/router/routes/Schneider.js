@@ -1,7 +1,5 @@
 import { lazy } from 'react'
 
-const Analytics = lazy(() => import('../../views/schneider/dashboard/analytics'))
-const Ecommerce = lazy(() => import('../../views/schneider/dashboard/ecommerce'))
 const Intergrated = lazy(() => import('../../views/schneider/dashboard/intergrated'))
 const It = lazy(() => import('../../views/schneider/dashboard/it'))
 const Facilities = lazy(() => import('../../views/schneider/dashboard/facilities'))
@@ -12,16 +10,6 @@ const Alarms = lazy(() => import('../../views/schneider/alarms'))
 const Reports = lazy(() => import('../../views/schneider/reports'))
 
 const SchneiderRoutes = [
-  {
-    path: '/dashboard/analytics',
-    element: <Analytics />,
-    exact: true
-  },
-  {
-    path: '/dashboard/ecommerce',
-    element: <Ecommerce />,
-    exact: true
-  },
   {
     path: '/dashboard/intergrated',
     element: <Intergrated />,
