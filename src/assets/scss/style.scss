@@ -45,6 +45,10 @@ body, .header-navbar, .navigation{
 	z-index: 0;
 }
 
+.modal-body {
+	padding: 1.4rem;
+}
+
 .apexcharts-text,
 .apexcharts-tooltip-text,
 .apexcharts-datalabel-label,
@@ -562,6 +566,7 @@ ul.row-rank {
 	.list {
 		display: flex;
 		border-top: 1px solid #293249;
+		border-bottom: 1px solid #293249;
 		padding: .8rem 0;
 		.number {
 			width: 100px;
@@ -591,8 +596,8 @@ ul.row-rank {
 			}
 		}
 	}
-	.list:last-child {
-		border-bottom: 1px solid #293249;
+	.list + .list {
+		margin-top: -1px;
 	}
 	.table {
 		height: 100%;
@@ -655,7 +660,7 @@ ul.row-rank {
 			justify-content: space-between;
 			align-items: center;
 			> h3 {
-				margin: 0;
+				margin: 0 0 0 1rem;
 			}
 			.circle {
 				width: 30px;
@@ -705,6 +710,7 @@ ul.row-rank {
 	> table {
 		border: 1px solid #3b4253;
 		table-layout: fixed;
+		margin: 0;
 		th {
 			width: 150px;
 			background-color: #343d55;

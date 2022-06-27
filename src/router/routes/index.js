@@ -7,7 +7,7 @@ import FormRoutes from './Forms'
 import PagesRoutes from './Pages'
 import TablesRoutes from './Tables'
 import ChartsRoutes from './Charts'
-// import DashboardRoutes from './Dashboards'
+import DashboardRoutes from './Dashboards'
 import UiElementRoutes from './UiElements'
 import ExtensionsRoutes from './Extensions'
 import PageLayoutsRoutes from './PageLayouts'
@@ -42,7 +42,7 @@ const DefaultRoute = '/dashboard/intergrated'
 // ** Merge Routes
 const Routes = [
   ...AuthenticationRoutes,
-  // ...DashboardRoutes,
+  ...DashboardRoutes,
   ...AppRoutes,
   ...PagesRoutes,
   ...UiElementRoutes,

@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle, CardBody, Table } from 'reactstrap'
+import { Card, CardHeader, CardTitle, CardBody, Table, Pagination, PaginationItem, PaginationLink } from 'reactstrap'
 import { Settings } from 'react-feather'
 import { useState } from 'react'
 
@@ -154,6 +154,29 @@ const RealtimeAlarm = () => {
               </div>
             </div>
           </div>
+          <Pagination className='d-flex mt-3 justify-content-center'>
+            <PaginationItem>
+              <PaginationLink href='#'>1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href='#'>2</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href='#'>3</PaginationLink>
+            </PaginationItem>
+            <PaginationItem active>
+              <PaginationLink href='#'>4</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href='#'>5</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href='#'>6</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href='#'>7</PaginationLink>
+            </PaginationItem>
+          </Pagination>
         </CardBody>
       </Card>
       <ModalDetail open={activeModalDetail} handleModal={handleModalDetail}/>

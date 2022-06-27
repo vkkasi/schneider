@@ -4,7 +4,7 @@ import { selectThemeColors } from '@utils'
 import Select from 'react-select'
 
 import Flatpickr from 'react-flatpickr'
-import RealtimeAlarm from './widgets/list'
+import RealtimeAlarm from '@src/views/schneider/widget/RealtimeAlarm'
 
 import '@styles/react/libs/charts/apex-charts.scss'
 import '@styles/react/libs/flatpickr/flatpickr.scss'
@@ -164,7 +164,7 @@ const MainCondition = () => {
         </Col>
       </Row>
       <div className='mt-3' >
-        <RealtimeAlarm></RealtimeAlarm>
+        <RealtimeAlarm isPage={true} />
       </div>
     </div>
   </>
