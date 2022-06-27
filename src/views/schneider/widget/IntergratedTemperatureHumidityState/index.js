@@ -82,7 +82,7 @@ const IntergratedTemperatureHumidityState = () => {
 
       return (
         <>
-          <div key={index} className={`d-flex justify-content-center work-schedule work-schedule-color ${stateClass}`}>
+          <div key={`${item.name}-${index}`} className={`d-flex justify-content-center work-schedule work-schedule-color ${stateClass}`}>
             <div className='item text-center'>{item.name}</div>
             <div className='item flex-grow-1'>{item.temprature}{strHumidity}</div>
           </div>
