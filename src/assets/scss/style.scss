@@ -18,18 +18,23 @@ body, .header-navbar, .navigation{
 
 .bg-smarty-red {
 	background-color: rgb(174, 47, 65) !important;
+	// #ae2f41
 }
 .bg-smarty-orange {
 	background-color: rgb(214, 133, 2) !important;
+	// #228502
 }
 .bg-smarty-yellow {
 	background-color: rgb(255, 193, 5) !important;
+	// #ffc105
 }
 .bg-smarty-green {
 	background-color: rgb(69, 156, 77) !important;
+	// #459c4d
 }
 .bg-smarty-blue {
 	background-color: rgb(1, 125, 186) !important;
+	// #017dba
 }
 .bg-smarty-purple {
 	background-color: rgb(108, 58, 165) !important;
@@ -1108,4 +1113,19 @@ ul.row-rank {
 
 .smarty_cytoscape {
 	height: 1000px;
+}
+
+
+.popper-div {
+	background-color: rgba(34, 42, 61, 1);
+	color: #ccc;
+	border-radius: 4px;
+	padding: .7rem;
+	p {
+		margin: 0;
+		line-height: 1;
+	}
+	p + p {
+		margin: 0.3rem 0 0 0;
+	}
 }

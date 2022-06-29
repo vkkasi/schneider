@@ -82,7 +82,7 @@ const SupportTracker = props => {
       <CardBody>
         <Row>
           <Col className='d-flex justify-content-center'>
-            <Chart options={options} series={series} type='radialBar' height={270} id='support-tracker-card' />
+            <Chart options={options} series={series} type='radialBar' height={props.height} id='support-tracker-card' />
           </Col>
         </Row>
         <div className='box-pue-text d-flex justify-content-center mt-1'>

@@ -21,8 +21,8 @@ const Tab1F = () => {
 					<CardTitle className='ta-c' tag='h4'>시간당 Voltage Sag/Swell 발생빈도</CardTitle>
 					<Settings size={18} className='cursor-pointer' />
 				</CardHeader> */}
-        		<CardBody>
-					<CytoscapeMain useLayout='klay'/>
+        <CardBody>
+					<CytoscapeMain useLayout='cola'/>
 				</CardBody>
 			</Card>
         </Col>

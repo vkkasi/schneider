@@ -1,12 +1,21 @@
+/* eslint-disable multiline-ternary */
+/* eslint-disable quote-props */
 /* eslint-disable object-shorthand */
-import { useEffect } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Chart from 'react-apexcharts'
 import { Card, CardHeader, CardTitle, CardBody, CardSubtitle } from 'reactstrap'
 import { Settings } from 'react-feather'
 
+import axios from 'axios'
+
 const EnergyUse = () => {
-  const TICKINTERVAL = 86400000
-  const XAXISRANGE = 777600000
+  const [temp, setTemp] = useState([])
+  const [humi, setHumi] = useState([])
+
+  // const TICKINTERVAL = 86400000
+  // const XAXISRANGE =  777600000
+  const TICKINTERVAL = 600000
+  const XAXISRANGE =  5400000
   
   function getDayWiseTimeSeries(baseval, count, yrange) {
     let i = 0
@@ -43,8 +52,6 @@ const EnergyUse = () => {
       data[i][1] = 0
     }
 
-    console.log('data1', data)
-
     data.push([
       newDate,
       Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min
@@ -52,8 +59,7 @@ const EnergyUse = () => {
 
     return data
   }
-  
-  
+
   const options = {
     chart: {
       id: 'realtime',
@@ -88,43 +94,157 @@ const EnergyUse = () => {
       range: XAXISRANGE
     },
     yaxis: {
+      min: 0,
       max: 100
     }
   }
 
+  // axios.defaults.headers.common['Authorization'] = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoicG9zdGdyZXMifQ.uZEL0p6wg-CzopSdlaTf5HA1TQK7X44LRWzY9P9gotU';
+
+  // const config = {
+  //   withCredentials: true, 
+  //   headers: {
+  //       'Content-Type': 'application/json',
+  //       'Access-Control-Allow-Origin': '*',
+  //       // 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoicG9zdGdyZXMifQ.uZEL0p6wg-CzopSdlaTf5HA1TQK7X44LRWzY9P9gotU'
+  //   }
+  // }
+
+  // function getData(order, limit) {
+  //   // config.headers.Authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoicG9zdGdyZXMifQ.uZEL0p6wg-CzopSdlaTf5HA1TQK7X44LRWzY9P9gotU';
+  //   // console.log('config', config);
+  //   axios.get('http://13.125.248.32:3000/mysnmp2?order=logtime.desc&limit=1')
+  //     .then(response => {
+  //       console.log('response', response.json());
+  //     })
+  //     .catch(error => {
+  //       console.log('error', error);
+  //     })
+  // }
+
+  const replaceDate = (text) => {
+    return `${text.substr(0, 10)} ${text.substr(11, 2)}:${text.substr(14)}:00`;
+  }
+
+  async function getInitData() {
+    fetch(`http://13.125.248.32:3000/mysnmp2?order=logtime.desc&limit=10`)
+    .then(response => response.json())
+    .then(response => {
+      const aTemp = [];
+      const aHumi = [];
+      let date = ''
+
+      response.reverse();
+      response.map(item => {
+        date = replaceDate(item.logtime);
+        aTemp.push([new Date(date).getTime(), item.sensortemp]);
+        aHumi.push([new Date(date).getTime(), item.sensorhumi]);
+      })
+      // console.log(aTemp, aHumi)
+      setTemp(aTemp);
+      setHumi(aHumi);
+    })
+    .catch(error => {
+      console.log('error', error);
+    })
+  }
+
+  function getData(str, data) {
+    const temp = data;
+    fetch(`http://13.125.248.32:3000/mysnmp2?order=logtime.desc&limit=1`)
+    .then(response => response.json())
+    .then(response => {
+      console.log('data', data);
+      // for (let i = 0; i < data.length - 10; i++) {
+      //   // IMPORTANT
+      //   // we reset the x and y of the data which is out of drawing area to prevent memory leaks
+      //   data[i][0] = newDate - XAXISRANGE - TICKINTERVAL
+      //   data[i][1] = 0
+      // }
+      const date = new Date(replaceDate(response[0].logtime)).getTime();
+
+      (str === 'temp') ?
+      data.push([
+        date,
+        response[0].sensortemp
+      ])
+      :
+      data.push([
+        date,
+        response[0].sensorhumi
+      ])
+
+      // const aTemp = [...temp];
+      // const aHumi = [...humi];
+      // let date = ''
+      // date = replaceDate(response[0].logtime);
+      // aTemp.push([new Date(date).getTime(), response[0].sensortemp]);
+      // aHumi.push([new Date(date).getTime(), response[0].sensorhumi]);
+      // console.log(aTemp, aHumi)
+      // setTemp(aTemp);
+      // setHumi(aHumi);
+    })
+    .catch(error => {
+      console.log('error', error);
+    })
+  
+    // return series
+  }
+
   const series = [
     {
-      name: 'data1',
-      data: getDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 10, { min: 10, max: 90 }).slice()
+      name: '온도',
+      data: temp
     },
     {
-      name: 'data2',
-      data: getDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 10, { min: 10, max: 90 }).slice()
-    },
-    {
-      name: 'data3',
-      data: getDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 10, { min: 10, max: 90 }).slice()
+      name: '습도',
+      data: humi
     }
   ]
 
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      ApexCharts.exec('realtime', 'updateSeries', [
-        {
-          data: getNewSeries({ min: 10, max: 90 }, series[0].data).slice()
-        },
-        {
-          data: getNewSeries({ min: 10, max: 90 }, series[1].data).slice()
-        },
-        {
-          data: getNewSeries({ min: 10, max: 90 }, series[2].data).slice()
-        }
-      ])
-    }, 5000)
+  // const series = [
+  //   {
+  //     name: 'data1',
+  //     data: getDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 10, { min: 10, max: 90 }).slice()
+  //   },
+  //   {
+  //     name: 'data2',
+  //     data: getDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 10, { min: 10, max: 90 }).slice()
+  //   },
+  //   {
+  //     name: 'data3',
+  //     data: getDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 10, { min: 10, max: 90 }).slice()
+  //   }
+  // ]
 
-    return () => {
-      window.clearInterval(interval)
-    }
+  
+  useEffect(() => {
+    // const interval = window.setInterval(() => {
+      // console.log(series)
+      // const data = getData(series);
+
+      // console.log('data', data)
+
+    //   ApexCharts.exec('realtime', 'updateSeries', [
+    //     {
+    //       data: getData('temp', series[0].data)
+    //     },
+    //     {
+    //       data: getData('humi', series[1].data)
+    //     },
+    //     // {
+    //     //   data: getNewSeries({ min: 10, max: 90 }, series[2].data).slice()
+    //     // }
+    //   ])
+    // }, 5000)
+
+    // return () => {
+    //   window.clearInterval(interval)
+    // }
+  }, [])
+
+  useEffect(() => {
+    getInitData();
   }, [])
 
   return (
@@ -142,3 +262,21 @@ const EnergyUse = () => {
 }
 
 export default EnergyUse
+
+
+const useInterval = (callback, delay) => {
+  const savedCallback = useRef();
+
+  useEffect(() => {
+      savedCallback.current = callback;
+  });
+
+  useEffect(() => {
+      const tick = () => {
+          savedCallback.current();
+      }
+
+      const timerId = setInterval(tick, delay);
+      return () => clearInterval(timerId);
+  }, [delay]);
+}

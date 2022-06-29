@@ -46,11 +46,18 @@ const DashboardIntergrated = () => {
     <div id='dashboard-ecommerce'>
       <Row className='match-height'>
         <Col xs='4'>
-          <GreenKPIs />
+          <Row className='match-height'>
+            <Col xs='8'>
+              <GreenKPIs />
+            </Col>
+            <Col xs='4'>
+              <IntergratedPUE primary={context.colors.primary.main} danger={context.colors.danger.main} height={210} />
+            </Col>
+          </Row>
           <IntergratedTemperatureHumidityState />
         </Col>
         <Col xs='4'>
-			<RadarCharts title={'오늘 이벤트 분포도'}/>
+			    <RadarCharts title={'오늘 이벤트 분포도'}/>
           {/* <EnergyEverageUse /> */}
         </Col>
         <Col xs='4'>

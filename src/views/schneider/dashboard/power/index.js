@@ -27,7 +27,7 @@ const DashboardIntergrated = () => {
 		<div id='dashboard-power'>
 			<Row className='match-height'>
 				<Col xs='3'>
-					<IntergratedPUE primary={context.colors.primary.main} danger={context.colors.danger.main} />
+					<IntergratedPUE primary={context.colors.primary.main} danger={context.colors.danger.main} height={300}/>
 				</Col>
 				<Col xs='9'>
 					<AlrarmDangerIndex />
