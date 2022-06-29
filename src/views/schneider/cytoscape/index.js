@@ -9,6 +9,7 @@ import COSEBilkent from 'cytoscape-cose-bilkent'
 import dagre from 'cytoscape-dagre'
 import klay from 'cytoscape-klay'
 import popper from 'cytoscape-popper';
+import cola from 'cytoscape-cola';
 
 Cytoscape.use(COSEBilkent); //cose-bilkent
 Cytoscape.use(dagre);
@@ -26,10 +27,10 @@ const CytoscapeMain = ({useLayout}) => {
 			{ data: { id: '3', label: 'RACK-03', image: 'rack', temp: '28', humi: '55' } },
 			{ data: { id: '4', label: 'RACK-04', image: 'rack', temp: '38', humi: '62' } },
 			{ data: { id: '5', label: 'RACK-05', image: 'rack', temp: '24', humi: '47' } },
-			{ data: { id: '6', label: 'RACK-06', image: 'rack', temp: '26', humi: '45' } },
-			{ data: { id: '7', label: 'RACK-07', image: 'rack', temp: '32', humi: '32' } },
-			{ data: { id: '8', label: 'RACK-08', image: 'rack', temp: '28', humi: '55' } },
-			{ data: { id: '9', label: 'RACK-09', image: 'rack', temp: '38', humi: '62' } },
+			// { data: { id: '6', label: 'RACK-06', image: 'rack', temp: '26', humi: '45' } },
+			// { data: { id: '7', label: 'RACK-07', image: 'rack', temp: '32', humi: '32' } },
+			// { data: { id: '8', label: 'RACK-08', image: 'rack', temp: '28', humi: '55' } },
+			// { data: { id: '9', label: 'RACK-09', image: 'rack', temp: '38', humi: '62' } },
 			// { data: { id: '2.1', label: 'SV-102', image: 'ups' } },
 			// { data: { id: '2.2', label: 'SV-103', image: 'firewall' } },
 			// { data: { id: '2.3', label: 'SV-104', image: 'server' } },
@@ -119,20 +120,6 @@ const CytoscapeMain = ({useLayout}) => {
 	const cyCallback = useCallback((cy) => {
 		if (cyObject) return;
 
-		cy.on('click', 'node', (evt) => {
-			if (evt.target.data().id === '1') {
-				cy.add([
-					{ group: 'nodes', data: { id: '1.1', label: 'SV-102', image: 'server' } },
-					{ group: 'nodes', data: { id: '1.2', label: 'SV-103', image: 'server' } },
-					{ group: 'nodes', data: { id: '1.3', label: 'SV-104', image: 'server' } },
-					{ group: 'edges', data: { source: '1', target: '1.1' } },
-					{ group: 'edges', data: { source: '1', target: '1.2' } },
-					{ group: 'edges', data: { source: '1', target: '1.3' } },
-				])
-				cy.center();
-			}
-		})
-
 		const makePopper = ele => {
 			const oPopper = ele.popper({
 				content: function() {
@@ -153,7 +140,26 @@ const CytoscapeMain = ({useLayout}) => {
 			ele.cy().on('pan zoom resize', () => {
 				oPopper.update();
 			})
-		};
+		}
+
+		cy.on('click', 'node', (evt) => {
+			if (evt.target.data().id === '1') {
+				cy.layout(layout).stop();
+				cy.add([
+					{ group: 'nodes', data: { id: '1.1', label: 'SV-102', image: 'server', temp: '26', humi: '45' } },
+					{ group: 'nodes', data: { id: '1.2', label: 'SV-103', image: 'server', temp: '26', humi: '45' } },
+					{ group: 'nodes', data: { id: '1.3', label: 'SV-104', image: 'server', temp: '26', humi: '45' } },
+					{ group: 'edges', data: { source: '1', target: '1.1' } },
+					{ group: 'edges', data: { source: '1', target: '1.2' } },
+					{ group: 'edges', data: { source: '1', target: '1.3' } },
+				])
+				cy.center();
+				cy.elements().forEach(ele => {
+					makePopper(ele);
+				});
+				cy.layout(layout).run();
+			}
+		})
 
 		cy.elements().forEach(ele => {
 			makePopper(ele);

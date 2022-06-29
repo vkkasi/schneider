@@ -22,7 +22,7 @@ const Tab1F = () => {
 					<Settings size={18} className='cursor-pointer' />
 				</CardHeader> */}
         <CardBody>
-					<CytoscapeMain useLayout='cola'/>
+					<CytoscapeMain useLayout=''/>
 				</CardBody>
 			</Card>
         </Col>
