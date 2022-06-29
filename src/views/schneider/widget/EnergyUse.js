@@ -149,12 +149,12 @@ const EnergyUse = () => {
     })
   }
 
-  function getData(str, data) {
-    const temp = data;
+  function getData(series) {
     fetch(`http://13.125.248.32:3000/mysnmp2?order=logtime.desc&limit=1`)
     .then(response => response.json())
     .then(response => {
-      console.log('data', data);
+      console.log('series', series);
+
       // for (let i = 0; i < data.length - 10; i++) {
       //   // IMPORTANT
       //   // we reset the x and y of the data which is out of drawing area to prevent memory leaks
@@ -163,16 +163,8 @@ const EnergyUse = () => {
       // }
       const date = new Date(replaceDate(response[0].logtime)).getTime();
 
-      (str === 'temp') ?
-      data.push([
-        date,
-        response[0].sensortemp
-      ])
-      :
-      data.push([
-        date,
-        response[0].sensorhumi
-      ])
+      setTemp([...temp, [date, response[0].sensortemp]])
+      setHumi([...humi, [date, response[0].sensorhumi]])
 
       // const aTemp = [...temp];
       // const aHumi = [...humi];
@@ -246,6 +238,39 @@ const EnergyUse = () => {
   useEffect(() => {
     getInitData();
   }, [])
+  
+  function useInterval(callback, delay) {
+    const savedCallback = useRef();
+  
+    useEffect(() => {
+      savedCallback.current = callback;
+    });
+  
+    useEffect(() => {
+      function tick() {
+        savedCallback.current();
+      }
+  
+      const id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }, [delay]);
+  }
+
+    useInterval(() => {
+      getData(series);
+
+      ApexCharts.exec('realtime', 'updateSeries', [
+            {
+              data: temp
+            },
+            {
+              data: humi
+            },
+            // {
+            //   data: getNewSeries({ min: 10, max: 90 }, series[2].data).slice()
+            // }
+          ])
+    }, 600000);
 
   return (
     <Card>
