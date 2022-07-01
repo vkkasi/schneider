@@ -11,5 +11,5 @@ import formsAndTables from './forms-tables'
 import schneider from './schneider'
 
 // ** Merge & Export
-export default [...schneider, ...dashboards, ...apps, ...uiElements, ...formsAndTables, ...pages, ...charts]
-// export default [...schneider]
+// export default [...schneider, ...dashboards, ...apps, ...uiElements, ...formsAndTables, ...pages, ...charts]
+export default [...schneider]

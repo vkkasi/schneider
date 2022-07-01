@@ -100,11 +100,11 @@ const Login = () => {
       <Card className='mb-0'>
         <CardBody>
           <Link className='brand-logo' to='/' onClick={e => e.preventDefault()}>
-            <img src="/images/logo_login.jpg"/>
+            <img style={{width: '100%'}} src="/images/logo_login_schneider.png"/>
           </Link>
-          <CardTitle tag='h4' className='mb-1 text-center'>
+          {/* <CardTitle tag='h4' className='mb-1 text-center'>
             <img src="/images/logo_login_schneider.jpg"/>
-          </CardTitle>
+          </CardTitle> */}
           {/* <CardText className='mb-2'>관리자를 통해 사용자 등록 후 서비스를 이용하실 수 있습니다.</CardText> */}
           <Form className='auth-login-form mt-2' onSubmit={handleSubmit(onSubmit)}>
             <FormGroup>

@@ -42,59 +42,51 @@ const SwiperCenterSlidesStyle = ({handlerSwiper}) => {
       <CardBody>
         <Swiper {...params}>
           <SwiperSlide onClick={() => { handlerSwiper('01') }}>
-            <img src='/images/facilities/item1.jpg' alt='swiper 1' className='img-fluid' />
+            <img src='/images/facilities/ACRD.png' alt='swiper 1' className='img-fluid' />
             <div className='text-center mt-50'>Chiller</div>
           </SwiperSlide>
           <SwiperSlide onClick={() => { handlerSwiper('02') }}>
-            <img src='/images/facilities/item2.jpg' alt='swiper 2' className='img-fluid' />
+            <img src='/images/facilities/chiller.png' alt='swiper 2' className='img-fluid' />
             <div className='text-center mt-50'>Cooler</div>
           </SwiperSlide>
           <SwiperSlide onClick={() => { handlerSwiper('03') }}>
-            <img src='/images/facilities/item3.jpg' alt='swiper 3' className='img-fluid' />
+            <img src='/images/facilities/cooling.png' alt='swiper 3' className='img-fluid' />
             <div className='text-center mt-50'>Cooler</div>
           </SwiperSlide>
           <SwiperSlide onClick={() => { handlerSwiper('04') }}>
-            <img src='/images/facilities/item4.jpg' alt='swiper 4' className='img-fluid' />
+            <img src='/images/facilities/pdpm.png' alt='swiper 4' className='img-fluid' />
             <div className='text-center mt-50'>Cooler</div>
           </SwiperSlide>
           <SwiperSlide onClick={() => { handlerSwiper('05') }}>
-            <img src='/images/facilities/item5.jpg' alt='swiper 5' className='img-fluid' />
+            <img src='/images/facilities/ups.png' alt='swiper 5' className='img-fluid' />
             <div className='text-center mt-50'>Cooler</div>
           </SwiperSlide>
           <SwiperSlide onClick={() => { handlerSwiper('06') }}>
-            <img src='/images/facilities/item6.jpg' alt='swiper 6' className='img-fluid' />
-            <div className='text-center mt-50'>Cooler</div>
-          </SwiperSlide>
-          <SwiperSlide onClick={() => { handlerSwiper('07') }}>
-            <img src='/images/facilities/item7.jpg' alt='swiper 6' className='img-fluid' />
+            <img src='/images/facilities/upsilon.png' alt='swiper 6' className='img-fluid' />
             <div className='text-center mt-50'>Cooler</div>
           </SwiperSlide>
           <SwiperSlide onClick={() => { handlerSwiper('01') }}>
-            <img src='/images/facilities/item1.jpg' alt='swiper 1' className='img-fluid' />
+            <img src='/images/facilities/ACRD.png' alt='swiper 1' className='img-fluid' />
             <div className='text-center mt-50'>Chiller</div>
           </SwiperSlide>
           <SwiperSlide onClick={() => { handlerSwiper('02') }}>
-            <img src='/images/facilities/item2.jpg' alt='swiper 2' className='img-fluid' />
+            <img src='/images/facilities/chiller.png' alt='swiper 2' className='img-fluid' />
             <div className='text-center mt-50'>Cooler</div>
           </SwiperSlide>
           <SwiperSlide onClick={() => { handlerSwiper('03') }}>
-            <img src='/images/facilities/item3.jpg' alt='swiper 3' className='img-fluid' />
+            <img src='/images/facilities/cooling.png' alt='swiper 3' className='img-fluid' />
             <div className='text-center mt-50'>Cooler</div>
           </SwiperSlide>
           <SwiperSlide onClick={() => { handlerSwiper('04') }}>
-            <img src='/images/facilities/item4.jpg' alt='swiper 4' className='img-fluid' />
+            <img src='/images/facilities/pdpm.png' alt='swiper 4' className='img-fluid' />
             <div className='text-center mt-50'>Cooler</div>
           </SwiperSlide>
           <SwiperSlide onClick={() => { handlerSwiper('05') }}>
-            <img src='/images/facilities/item5.jpg' alt='swiper 5' className='img-fluid' />
+            <img src='/images/facilities/ups.png' alt='swiper 5' className='img-fluid' />
             <div className='text-center mt-50'>Cooler</div>
           </SwiperSlide>
           <SwiperSlide onClick={() => { handlerSwiper('06') }}>
-            <img src='/images/facilities/item6.jpg' alt='swiper 6' className='img-fluid' />
-            <div className='text-center mt-50'>Cooler</div>
-          </SwiperSlide>
-          <SwiperSlide onClick={() => { handlerSwiper('07') }}>
-            <img src='/images/facilities/item7.jpg' alt='swiper 6' className='img-fluid' />
+            <img src='/images/facilities/upsilon.png' alt='swiper 6' className='img-fluid' />
             <div className='text-center mt-50'>Cooler</div>
           </SwiperSlide>
         </Swiper>

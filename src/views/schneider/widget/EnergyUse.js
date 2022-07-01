@@ -153,14 +153,6 @@ const EnergyUse = () => {
     fetch(`http://13.125.248.32:3000/mysnmp2?order=logtime.desc&limit=1`)
     .then(response => response.json())
     .then(response => {
-      console.log('series', series);
-
-      // for (let i = 0; i < data.length - 10; i++) {
-      //   // IMPORTANT
-      //   // we reset the x and y of the data which is out of drawing area to prevent memory leaks
-      //   data[i][0] = newDate - XAXISRANGE - TICKINTERVAL
-      //   data[i][1] = 0
-      // }
       const date = new Date(replaceDate(response[0].logtime)).getTime();
 
       setTemp([...temp, [date, response[0].sensortemp]])
@@ -179,8 +171,24 @@ const EnergyUse = () => {
     .catch(error => {
       console.log('error', error);
     })
+  }
+
+  // setInterval state 문제 해결
+  function useInterval(callback, delay) {
+    const savedCallback = useRef();
   
-    // return series
+    useEffect(() => {
+      savedCallback.current = callback;
+    });
+  
+    useEffect(() => {
+      function tick() {
+        savedCallback.current();
+      }
+  
+      const id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }, [delay]);
   }
 
   const series = [
@@ -209,74 +217,31 @@ const EnergyUse = () => {
   //   }
   // ]
 
-  
-  useEffect(() => {
-    // const interval = window.setInterval(() => {
-      // console.log(series)
-      // const data = getData(series);
+  useInterval(() => {
+    getData(series);
 
-      // console.log('data', data)
-
-    //   ApexCharts.exec('realtime', 'updateSeries', [
-    //     {
-    //       data: getData('temp', series[0].data)
-    //     },
-    //     {
-    //       data: getData('humi', series[1].data)
-    //     },
-    //     // {
-    //     //   data: getNewSeries({ min: 10, max: 90 }, series[2].data).slice()
-    //     // }
-    //   ])
-    // }, 5000)
-
-    // return () => {
-    //   window.clearInterval(interval)
-    // }
-  }, [])
+    ApexCharts.exec('realtime', 'updateSeries', [
+      {
+        data: temp
+      },
+      {
+        data: humi
+      },
+      // {
+      //   data: getNewSeries({ min: 10, max: 90 }, series[2].data).slice()
+      // }
+    ])
+  }, 600000);
 
   useEffect(() => {
     getInitData();
   }, [])
-  
-  function useInterval(callback, delay) {
-    const savedCallback = useRef();
-  
-    useEffect(() => {
-      savedCallback.current = callback;
-    });
-  
-    useEffect(() => {
-      function tick() {
-        savedCallback.current();
-      }
-  
-      const id = setInterval(tick, delay);
-      return () => clearInterval(id);
-    }, [delay]);
-  }
-
-    useInterval(() => {
-      getData(series);
-
-      ApexCharts.exec('realtime', 'updateSeries', [
-            {
-              data: temp
-            },
-            {
-              data: humi
-            },
-            // {
-            //   data: getNewSeries({ min: 10, max: 90 }, series[2].data).slice()
-            // }
-          ])
-    }, 600000);
 
   return (
     <Card>
       <CardHeader>
         <div></div>
-        <CardTitle className='ta-c' tag='h4'>시간대별 온/습도</CardTitle>
+        <CardTitle className='ta-c' tag='h4'>RACK 시간대별 온/습도</CardTitle>
         <Settings size={18} className='cursor-pointer' />
       </CardHeader>
       <CardBody>
@@ -287,21 +252,3 @@ const EnergyUse = () => {
 }
 
 export default EnergyUse
-
-
-const useInterval = (callback, delay) => {
-  const savedCallback = useRef();
-
-  useEffect(() => {
-      savedCallback.current = callback;
-  });
-
-  useEffect(() => {
-      const tick = () => {
-          savedCallback.current();
-      }
-
-      const timerId = setInterval(tick, delay);
-      return () => clearInterval(timerId);
-  }, [delay]);
-}

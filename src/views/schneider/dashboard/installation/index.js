@@ -6,6 +6,7 @@ import Widget from '@src/views/schneider/widget/installation/Widget'
 import CircleIndicator from '@src/views/schneider/widget/installation/CircleIndicator'
 import RealtimeEventState from '@src/views/schneider/widget/RealtimeEventState'
 import EnergyUse from '@src/views/schneider/widget/EnergyUse'
+import EnergyUse2 from '@src/views/schneider/widget/EnergyUse2'
 import HeatMap from '@src/views/schneider/widget/HeatMap'
 
 import '@styles/react/libs/charts/apex-charts.scss'
@@ -275,6 +276,11 @@ const DashboardIntergrated = () => {
         </Col>
         <Col xs='6'>
           <HeatMap />
+        </Col>
+      </Row>
+      <Row className='match-height'>
+        <Col xs='12'>
+          <EnergyUse2 />
         </Col>
       </Row>
       <Row className='match-height'>

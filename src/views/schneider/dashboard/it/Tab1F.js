@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react'
+
+
 import { Row, Col, Card, CardHeader, CardTitle, CardBody } from 'reactstrap'
 import { Settings } from 'react-feather'
 
@@ -22,7 +25,7 @@ const Tab1F = () => {
 					<Settings size={18} className='cursor-pointer' />
 				</CardHeader> */}
         <CardBody>
-					<CytoscapeMain useLayout=''/>
+					<CytoscapeMain useLayout='grid' floor='1'/>
 				</CardBody>
 			</Card>
         </Col>

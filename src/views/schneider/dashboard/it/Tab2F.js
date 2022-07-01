@@ -8,7 +8,7 @@ const Tab2F = () => {
 			<Col xs='12'>
 				<Card className='card-green-kpis'>
 					<CardBody>
-						<CytoscapeMain useLayout='dagre'/>
+						<CytoscapeMain useLayout='' floor='2'/>
 					</CardBody>
 				</Card>
 			</Col>

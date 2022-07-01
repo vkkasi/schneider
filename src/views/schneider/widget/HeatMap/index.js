@@ -40,127 +40,106 @@ const HeatMap = () => {
 					{
 						from: 0,
 						to: 2,
-						name: 'low',
 						color: '#0000ff'
 					},
 					{
 						from: 3,
 						to: 5,
-						name: 'medium',
 						color: '#0033ff'
 					},
 					{
 						from: 6,
 						to: 8,
-						name: 'high',
 						color: '#0066ff'
 					},
 					{
 						from: 9,
 						to: 11,
-						name: 'extreme',
 						color: '#0099ff'
 					},
 					{
 						from: 12,
 						to: 14,
-						name: '',
 						color: '#00ccff'
 					},
 					{
 						from: 15,
 						to: 17,
-						name: '',
 						color: '#00ffff'
 					},
 					{
 						from: 18,
 						to: 20,
-						name: '',
 						color: '#00ffcc'
 					},
 					{
 						from: 21,
 						to: 23,
-						name: '',
 						color: '#00ff99'
 					},
 					{
 						from: 24,
 						to: 27,
-						name: '',
 						color: '#00ff66'
 					},
 					{
 						from: 27,
 						to: 29,
-						name: '',
 						color: '#00ff33'
 					},
 					{
 						from: 30,
 						to: 32,
-						name: '',
 						color: '#00ff00'
 					},
 					{
 						from: 33,
 						to: 35,
-						name: '',
 						color: '#33ff00'
 					},
 					{
 						from: 36,
 						to: 38,
-						name: '',
 						color: '#66ff00'
 					},
 					{
 						from: 39,
 						to: 41,
-						name: '',
 						color: '#99ff00'
 					},
 					{
 						from: 42,
 						to: 44,
-						name: '',
 						color: '#ccff00'
 					},
 					{
 						from: 45,
 						to: 47,
-						name: '',
 						color: '#ffff00'
 					},
 					{
 						from: 48,
 						to: 50,
-						name: '',
 						color: '#ffcc00'
 					},
 					{
 						from: 51,
 						to: 53,
-						name: '',
 						color: '#ff9900'
 					},
 					{
 						from: 54,
 						to: 56,
-						name: '',
 						color: '#ff6600'
 					},
 					{
 						from: 57,
 						to: 59,
-						name: '',
 						color: '#ff3300'
 					},
 					{
 						from: 60,
 						to: 62,
-						name: '',
 						color: '#ff0000'
 					}
 				]
@@ -176,7 +155,7 @@ const HeatMap = () => {
       opacity: 1,
     },
 	stroke: {
-		width: 0
+		width: 1
 	},
     legend: {
       show: false

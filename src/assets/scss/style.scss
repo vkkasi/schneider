@@ -325,7 +325,6 @@ ul.row-rank {
 	}
 	.item:nth-child(2) {
 		background-color: #222a3d;
-		text-align: center;
 	}
 	.item-state {
 		color: #fff;
@@ -529,7 +528,7 @@ ul.row-rank {
 		}
 		.svg-inline--fa {
 			vertical-align: top;
-			margin-top: -5px;
+			margin: -7px 0 0 1px;
 		}
 	}
 	.arrow.up{
@@ -972,7 +971,7 @@ ul.row-rank {
 		border-radius: 10px;
 		.card-body {
 			padding: 60px 200px;
-			min-width: 800px;
+			width: 600px;
 		}
 	}
 }
@@ -989,7 +988,7 @@ ul.row-rank {
 	left: calc(50% - 183px);
 }
 .horizontal-menu .header-navbar.navbar-brand-center .navbar-header .navbar-brand .brand-logo img {
-	max-width: 100% !important;
+	max-width: 180px !important;
 	margin-right: 1rem;
 }
 .brand-text {
@@ -999,6 +998,9 @@ ul.row-rank {
 
 .horizontal-menu .horizontal-menu-wrapper .header-navbar {
 	min-height: auto !important;
+}
+[dir] .navbar-nav {
+	margin: .5rem 0;
 }
 [dir] .horizontal-menu .header-navbar.navbar-horizontal ul#main-menu-navigation > li > a {
 	padding: .3rem 1.25rem !important;
@@ -1017,9 +1019,15 @@ ul.row-rank {
 		margin-right: .5rem;
 	}
 }
-
 .app-content.content {
 	background-color: #13161e;
+}
+.horizontal-layout.navbar-sticky .horizontal-menu-wrapper .navbar-horizontal.header-navbar.fixed-top {
+	top: 76px !important;
+}
+
+[dir] .horizontal-layout.navbar-sticky .app-content {
+	padding: calc(2rem + 5rem * 2) 2rem 0 2rem !important;
 }
 
 .card {
@@ -1125,8 +1133,17 @@ ul.row-rank {
 	p {
 		margin: 0;
 		line-height: 1;
+		font-size: .8rem;
 	}
 	p + p {
 		margin: 0.3rem 0 0 0;
 	}
+}
+
+.display-none {
+	display: none !important;
+}
+
+.swiper-horizontal > .swiper-scrollbar {
+	bottom: -5px !important;
 }

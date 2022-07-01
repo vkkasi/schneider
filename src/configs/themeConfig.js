@@ -4,7 +4,7 @@
 const themeConfig = {
   app: {
     appName: '통합 관리 포털',
-    appLogoImage: require('@src/assets/images/schneider/logo_sub_top.jpg').default
+    appLogoImage: require('@src/assets/images/schneider/logo_sub_top.png').default
   },
   layout: {
     isRTL: false,

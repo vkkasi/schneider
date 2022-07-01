@@ -87,13 +87,13 @@ const SupportTracker = props => {
         </Row>
         <div className='box-pue-text d-flex justify-content-center mt-1'>
           <div className='text-center bg-smarty-green'>
-            <span className='font-large-1 font-weight-bold'>{data.newTicket}</span>
+            <span className='font-large-1 font-weight-bold'>1.5</span>
           </div>
           <div className='text-center bg-smarty-blue'>
-            <span className='font-large-1 font-weight-bold'>{data.openTicket}</span>
+            <span className='font-large-1 font-weight-bold'>1.7</span>
           </div>
           <div className='text-center bg-smarty-red'>
-            <span className='font-large-1 font-weight-bold'>{data.responseTime}</span>
+            <span className='font-large-1 font-weight-bold'>2.0</span>
           </div>
         </div>
       </CardBody>
