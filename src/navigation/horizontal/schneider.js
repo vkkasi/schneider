@@ -102,27 +102,27 @@ export default [
     // ]
   },
   // {
-  //   id: 'record',
-  //   title: '리포트',
-  //   navLink: '/reports/',
+  //   id: 'gridLayout',
+  //   title: '그리드 레이아웃',
+  //   navLink: '/gridlayout/',
   //   icon: <Server size={20} />
-  //   // children: [
-  //   //   {
-  //   //     id: 'recordEquipment',
-  //   //     title: '통합',
-  //   //     navLink: '/record/equipment'
-  //   //   },
-  //   //   {
-  //   //     id: 'recordEvent',
-  //   //     title: '설비',
-  //   //     navLink: '/record/event'
-  //   //   },
-  //   //   {
-  //   //     id: 'recordBusiness',
-  //   //     title: '업무기록',
-  //   //     navLink: '/record/business'
-  //   //   }
-  //   // ]
+  // //   // children: [
+  // //   //   {
+  // //   //     id: 'recordEquipment',
+  // //   //     title: '통합',
+  // //   //     navLink: '/record/equipment'
+  // //   //   },
+  // //   //   {
+  // //   //     id: 'recordEvent',
+  // //   //     title: '설비',
+  // //   //     navLink: '/record/event'
+  // //   //   },
+  // //   //   {
+  // //   //     id: 'recordBusiness',
+  // //   //     title: '업무기록',
+  // //   //     navLink: '/record/business'
+  // //   //   }
+  // //   // ]
   // }
   // ,
   // {

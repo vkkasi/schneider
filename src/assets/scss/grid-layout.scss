@@ -1,0 +1,29 @@
+.grid-layout {
+	img {max-width: 100%;}
+	.inner {
+		// background-color: #222a3d;
+		border: 1px solid #444;
+		border-radius: 0px;
+		// display: flex;
+		// flex-flow: column;
+		// justify-content: center;
+		// background-image: url('/./assets/rack.png') no-repeat;
+		height: 100%;
+		cursor: pointer;
+
+		> div {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			background-color: #222a3d;
+			padding: .5rem;
+			width: 100%;
+		}
+		p {
+			margin: 0;
+			line-height: 1.5;
+			color: #fff;
+			font-size: .85rem;
+		}
+	}
+}

@@ -21,17 +21,17 @@ const RealtimeCondition = () => {
     return series
   }
 
-  let i = 0;
+  let i = 1;
   const datas = [];
 
-  while (i < 12) {
+  while (i < 13) {
     const series = getRandomSeries(7, {min: 0, max: 99})
     let color = '#ae2f41'
     if (0 < series[6] && series[6] < 24) color = '#017dba'
     if (25 < series[6] && series[6] < 49) color = '#459c4d'
     if (50 < series[6] && series[6] < 74) color = '#ffc105'
     const obj = {
-      title: `서버-${i}`,
+      title: `서버-1${i < 10 ? '0' : ''}${i}`,
       subTitle: `${series[6]}도`,
       color: color,
       series: [
@@ -50,7 +50,7 @@ const RealtimeCondition = () => {
     <Card className='card-transaction'>
       <CardHeader>
         <div></div>
-        <CardTitle className='ta-c' tag='h4'>1F 실시간 현황</CardTitle>
+        <CardTitle className='ta-c' tag='h4'>1F Rack 온도 Hot Spot – 12</CardTitle>
         <Settings size={18} className='cursor-pointer' />
       </CardHeader>
       <CardBody>

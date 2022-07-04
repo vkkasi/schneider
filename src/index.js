@@ -44,6 +44,10 @@ import '@styles/react/libs/react-hot-toasts/react-hot-toasts.scss'
 // ** Core styles
 import './@core/assets/fonts/feather/iconfont.css'
 import './@core/scss/core.scss'
+
+import 'react-grid-layout/css/styles.css'
+import 'react-resizable/css/styles.css'
+
 import './assets/scss/style.scss'
 
 // ** Service Worker
