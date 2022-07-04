@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Table, Row, Col, Input, Button, Card, CardBody, Pagination, PaginationItem, PaginationLink } from 'reactstrap'
 import { selectThemeColors } from '@utils'
 import Select from 'react-select'
@@ -11,20 +11,78 @@ import '@styles/react/libs/flatpickr/flatpickr.scss'
 
 const MainCondition = () => {
   const [picker, setPicker] = useState(new Date())
+  const [data, setData] = useState(null)
+  const [data2, setData2] = useState(null)
 
   const colourOptions = [
-    { value: '0', label: '사용자 이름' },
-    { value: '1', label: '사용자 연락처' },
-    { value: '2', label: '지역 그룹명' },
-    { value: '3', label: '단말기 고유번호' },
-    { value: '4', label: '사용자 고유번호' }
+    { value: '0', label: '장비명' },
+    { value: '1', label: '모델' },
+    { value: '2', label: '시리얼번호' }
   ]
 
   const [activeModalDetail, setActiveModalDetail] = useState(false)
 
-  const handleModalDetail = () => {
+  const handleModalDetail = (item) => {
+   
+    console.log(item);
+    setData2(item)
     setActiveModalDetail(prev => !prev)
   }
+
+  // API에서 자원데이터 가져오기
+  function getData() {
+    fetch(`http://www.boan2da.com/api/index.php?strApiName=apiGetResourceInfo`)
+    .then(response => response.json())
+    .then(response => {
+      setData(response.arrResultData.arrList)
+      console.log(response);
+    })
+    .catch(error => {
+      console.log('error', error);
+    })
+  }
+
+  
+
+  // getData();  
+
+
+  const renderTr = () => {
+    console.log(data);
+    return data.map((item) => {
+      return (
+        <tr>
+          <td className='td-number'>{item.c_idx}</td>
+          <td>{item.c_type}</td>
+          <td>{item.c_serial_number}</td>
+          <td>{item.c_name}</td>
+          <td>{item.c_ip_addr}</td>
+          <td>{item.c_manufacturer}</td>
+          <td className='td-alarm-state'>
+            <div className='table-alarm-state'>
+              <span className='bg-danger'>0</span>
+              <span className='bg-warning'>0</span>
+              <span className='bg-primary'>0</span>
+            </div>
+          </td>
+          <td className='td-buttons'>
+            <div className='table-buttons'>
+              <Button size='sm' color='primary'>
+                장비 바로가기
+              </Button>
+              <Button size='sm' color='secondary' onClick={ () => handleModalDetail(item)}>
+                세부내역 보기
+              </Button>
+            </div>
+          </td>
+        </tr>
+      )
+    })
+  }
+
+  useEffect(() => {
+    getData(); 
+  }, [])
 
   return (
     <>
@@ -51,7 +109,7 @@ const MainCondition = () => {
                     />
                   </Col>
                   <Col xs="auto">
-                    <Input type='email' id='basicInput' placeholder='' />
+                    <Input type='text' id='sch_keyword' placeholder='' />
                   </Col>
                 </Row>
               </td>
@@ -81,38 +139,14 @@ const MainCondition = () => {
                 </tr>
               </thead>
               <tbody>
-              <tr>
-                  <td className='td-number'>2</td>
-                  <td>SDC (Small Data Center)</td>
-                  <td>ZA00000012</td>
-                  <td>apc1A6300</td>
-                  <td>192.168.1.20</td>
-                  <td>admin1</td>
-                  <td className='td-alarm-state'>
-                    <div className='table-alarm-state'>
-                      <span className='bg-danger'>2</span>
-                      <span className='bg-orange'>2</span>
-                      <span className='bg-warning'>2</span>
-                      <span className='bg-primary'>2</span>
-                    </div>
-                  </td>
-                  <td className='td-buttons'>
-                    <div className='table-buttons'>
-                      <Button size='sm' color='primary'>
-                        장비 바로가기
-                      </Button>
-                      <Button size='sm' color='secondary' onClick={handleModalDetail}>
-                        세부내역 보기
-                      </Button>
-                    </div>
-                  </td>
-                </tr>
+                {data && data.length > 0 ? renderTr() : ''}
               </tbody>
             </Table>
             <Pagination className='d-flex mt-3 justify-content-center'>
-              <PaginationItem>
+              <PaginationItem active>
                 <PaginationLink href='#'>1</PaginationLink>
               </PaginationItem>
+              {/*
               <PaginationItem>
                 <PaginationLink href='#'>2</PaginationLink>
               </PaginationItem>
@@ -131,11 +165,12 @@ const MainCondition = () => {
               <PaginationItem>
                 <PaginationLink href='#'>7</PaginationLink>
               </PaginationItem>
+              */}
             </Pagination>
           </CardBody>
         </Card>
       </div>
-      <ModalDetail open={activeModalDetail} handleModal={handleModalDetail}/>
+      <ModalDetail open={activeModalDetail} handleModal={handleModalDetail} data2={data2}/>
     </>
   )
 }

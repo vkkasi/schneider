@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Table, Row, Col, Input, Button, Label } from 'reactstrap'
 import { selectThemeColors } from '@utils'
 import Select from 'react-select'
@@ -12,15 +12,30 @@ import '@styles/react/libs/flatpickr/flatpickr.scss'
 
 const MainCondition = () => {
   const [picker, setPicker] = useState(new Date())
+  const [data, setData] = useState(null)
+  const [data2, setData2] = useState(null)
 
   const colourOptions = [
-    { value: '0', label: '사용자 이름' },
-    { value: '1', label: '사용자 연락처' },
-    { value: '2', label: '지역 그룹명' },
-    { value: '3', label: '단말기 고유번호' },
-    { value: '4', label: '사용자 고유번호' }
+    { value: '0', label: '장비명' }
   ]
 
+  // API에서 자원데이터 가져오기
+  function getData() {
+    fetch(`http://www.boan2da.com/api/index.php?strApiName=apiGetAlarmInfo`)
+    .then(response => response.json())
+    .then(response => {
+      setData(response.arrResultData.arrList)
+      console.log(response);
+    })
+    .catch(error => {
+      console.log('error', error);
+    })
+  }
+
+  useEffect(() => {
+    getData(); 
+  }, [])
+  
   return (
     <>
     <div id='main-condition'>
@@ -40,12 +55,13 @@ const MainCondition = () => {
                   위험
                 </Label>
               </div>
-              <div className='form-check form-check-inline form-check-success'>
+              {/*<div className='form-check form-check-inline form-check-success'>
                 <Input type='checkbox' id='Check0-1' name='Checkbox0' />
                 <Label className='form-check-label' for='Check0-1'>
                   경고
                 </Label>
               </div>
+              */}
               <div className='form-check form-check-inline form-check-success'>
                 <Input type='checkbox' id='Check0-2' name='Checkbox0' />
                 <Label className='form-check-label' for='Check0-2'>
@@ -164,7 +180,7 @@ const MainCondition = () => {
         </Col>
       </Row>
       <div className='mt-3' >
-        <RealtimeAlarm isPage={true} />
+        <RealtimeAlarm isPage={true} data={data} />
       </div>
     </div>
   </>

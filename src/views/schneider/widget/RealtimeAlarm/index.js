@@ -7,7 +7,7 @@ import ModalOpinion from '../../dashboard/intergrated/modal/opinion'
 import ModalMemo from '../../dashboard/intergrated/modal/memo'
 import ModalAssignment from '../../dashboard/intergrated/modal/Assignment'
 
-const RealtimeAlarm = () => {
+const RealtimeAlarm = (data) => {
   const [activeModalDetail, setActiveModalDetail] = useState(false)
   const [activeModalMemo, setActiveModalMemo] = useState(false)
   const [activeModalOpinion, setActiveModalOpinion] = useState(false)
@@ -28,35 +28,14 @@ const RealtimeAlarm = () => {
   const handleModalAssignment = () => {
     setActiveModalAssignment(prev => !prev)
   }
-
-  return (
-    <>
-      <Card className='card-realtime-alarm'>
-        <CardHeader>
-          <div></div>
-          <CardTitle className='ta-c' tag='h4'>실시간 알람</CardTitle>
-          <Settings size={18} className='cursor-pointer' />
-        </CardHeader>
-        <CardBody>
-          <div className='divide'>
-            <div>
-              <span className='title bg-smarty-red'>위험</span>
-              <span>5</span>
-            </div>
-            <div>
-              <span className='title bg-smarty-orange'>중요</span>
-              <span>5</span>
-            </div>
-            <div>
-              <span className='title bg-smarty-green'>경고</span>
-              <span>5</span>
-            </div>
-            <div>
-              <span className='title bg-smarty-blue'>일반</span>
-              <span>5</span>
-            </div>
-          </div>
-          <div className='list'>
+  console.log("alarm");
+  console.log(data.data);
+  
+  const renderTr = (data) => {
+    
+    return data.data.map((item) => {
+      return (
+        <div className='list'>
             <div className='number'><span>53</span></div>
             <div className='contents'>
               <h3>회로 차단기 트립</h3>
@@ -95,7 +74,39 @@ const RealtimeAlarm = () => {
               </div>
             </div>
           </div>
-          <div className='list'>
+      )
+    })
+  }
+
+  return (
+    <>
+      <Card className='card-realtime-alarm'>
+        <CardHeader>
+          <div></div>
+          <CardTitle className='ta-c' tag='h4'>실시간 알람</CardTitle>
+          <Settings size={18} className='cursor-pointer' />
+        </CardHeader>
+        <CardBody>
+          <div className='divide'>
+            <div>
+              <span className='title bg-smarty-red'>위험</span>
+              <span>5</span>
+            </div>
+            <div>
+              <span className='title bg-smarty-orange'>중요</span>
+              <span>5</span>
+            </div>
+            <div>
+              <span className='title bg-smarty-green'>경고</span>
+              <span>5</span>
+            </div>
+            <div>
+              <span className='title bg-smarty-blue'>일반</span>
+              <span>5</span>
+            </div>
+          </div>
+          {!data.data || data.data.length < 1 ? '' : (
+            <div className='list'>
             <div className='number bg-smarty-green'><span>53</span></div>
             <div className='contents'>
               <h3>회로 차단기 트립</h3>
@@ -134,8 +145,11 @@ const RealtimeAlarm = () => {
               </div>
             </div>
           </div>
+          )}
+          
+          
           <Pagination className='d-flex mt-3 justify-content-center'>
-            <PaginationItem>
+            <PaginationItem active>
               <PaginationLink href='#'>1</PaginationLink>
             </PaginationItem>
             <PaginationItem>
@@ -144,7 +158,7 @@ const RealtimeAlarm = () => {
             <PaginationItem>
               <PaginationLink href='#'>3</PaginationLink>
             </PaginationItem>
-            <PaginationItem active>
+            <PaginationItem >
               <PaginationLink href='#'>4</PaginationLink>
             </PaginationItem>
             <PaginationItem>
