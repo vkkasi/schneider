@@ -58,11 +58,11 @@ const DashboardFacilities = () => {
           </Row>
         </Col>
       </Row>
-	  <Row>
-        <Col>
-          <RealtimeAlarm/>
-        </Col>
-      </Row>
+      <Row>
+				<Col>
+				<RealtimeAlarm cate={'FA'}></RealtimeAlarm>
+				</Col>
+			</Row>
     </div>
   )
 }

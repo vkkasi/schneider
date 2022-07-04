@@ -76,7 +76,7 @@ const Tab1F = () => {
       </Row> */}
 	  <Row>
         <Col>
-          <RealtimeAlarm/>
+          {/* <RealtimeAlarm/> */}
         </Col>
       </Row>
     </>

@@ -62,7 +62,7 @@ const AlarmState = () => {
     labels: ['Percent']
   }
 
-  const series = [100]
+  const series = [70]
 
   return (
     <>
@@ -82,19 +82,19 @@ const AlarmState = () => {
             <Col>
               <div className='circle-indicator'>
                 <div className='circle'>
-                  <div className='value bg-smarty-red' style={{ marginTop: '-20%' }}></div>
+                  <div className='value bg-smarty-red' style={{ marginTop: '-40%' }}></div>
                   <span className='title'>위험</span>
                 </div>
                 <div className='circle'>
-                  <div className='value bg-smarty-orange' style={{ marginTop: '-40%' }}></div>
+                  <div className='value bg-smarty-orange' style={{ marginTop: '-30%' }}></div>
                   <span className='title'>경고</span>
                 </div>
-                <div className='circle'>
+                {/*<div className='circle'>
                   <div className='value bg-smarty-green' style={{ marginTop: '-60%' }}></div>
                   <span className='title'>주의</span>
-                </div>
+  </div>*/}
                 <div className='circle'>
-                  <div className='value bg-smarty-blue' style={{ marginTop: '-80%' }}></div>
+                  <div className='value bg-smarty-blue' style={{ marginTop: '-30%' }}></div>
                   <span className='title'>정보</span>
                 </div>
               </div>

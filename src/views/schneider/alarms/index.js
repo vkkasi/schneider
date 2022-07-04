@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Table, Row, Col, Input, Button, Label } from 'reactstrap'
+import { Table, Row, Col, Input, Card, CardBody, Button, Label,  Pagination, PaginationItem, PaginationLink } from 'reactstrap'
 import { selectThemeColors } from '@utils'
 import Select from 'react-select'
 
@@ -15,6 +15,7 @@ const MainCondition = () => {
   const [data, setData] = useState(null)
   const [data2, setData2] = useState(null)
 
+
   const colourOptions = [
     { value: '0', label: '장비명' }
   ]
@@ -29,6 +30,39 @@ const MainCondition = () => {
     })
     .catch(error => {
       console.log('error', error);
+    })
+  }
+
+  
+
+  // getData();  
+
+
+  const renderTr = () => {
+    console.log(data);
+    return data.map((item) => {
+      return (
+        <tr>
+          <td className='td-number'>{item.c_idx}</td>
+          <td>{item.c_severity}</td>
+          <td>{item.c_asset_name}</td>
+          <td>{item.c_label}</td>
+          <td>{item.c_message}</td>
+          <td>{item.c_state}</td>
+          <td>apcAdmin</td>
+          <td>{item.c_activated_dt}</td>
+          <td className='td-buttons'>
+            <div className='table-buttons'>
+              <Button size='sm' color='primary'>
+                장비 바로가기
+              </Button>
+              {/*<Button size='sm' color='secondary' onClick={ () => handleModalDetail(item)}>
+                세부내역 보기
+      </Button>*/}
+            </div>
+          </td>
+        </tr>
+      )
     })
   }
 
@@ -180,7 +214,54 @@ const MainCondition = () => {
         </Col>
       </Row>
       <div className='mt-3' >
-        <RealtimeAlarm isPage={true} data={data} />
+      <Card className='mt-3'>
+          <CardBody>
+            <Table bordered responsive className='table-basic table-resource ta-c'>
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>분류</th>
+                  <th>장비</th>
+                  <th>라벨</th>
+                  <th>알람명</th>
+                  <th>처리상태</th>
+                  <th>담당자</th>
+                  <th>발생일</th>
+                  <th>버튼</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data && data.length > 0 ? renderTr() : ''}
+              </tbody>
+            </Table>
+            <Pagination className='d-flex mt-3 justify-content-center'>
+              <PaginationItem active>
+                <PaginationLink href='#'>1</PaginationLink>
+              </PaginationItem>
+              {/*
+              <PaginationItem>
+                <PaginationLink href='#'>2</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href='#'>3</PaginationLink>
+              </PaginationItem>
+              <PaginationItem active>
+                <PaginationLink href='#'>4</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href='#'>5</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href='#'>6</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href='#'>7</PaginationLink>
+              </PaginationItem>
+              */}
+            </Pagination>
+          </CardBody>
+        </Card>
+        { /*<RealtimeAlarm isPage={true} category={"all"} /> */}
       </div>
     </div>
   </>

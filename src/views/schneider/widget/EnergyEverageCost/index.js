@@ -41,7 +41,7 @@ const EnergyEverageCost = () => {
       }
     },
     xaxis: {
-      categories: ['오늘', '일간 평균', '월간 평균', '연간 평균', '통합 평균', 'ECO 기준'],
+      categories: ['오늘', '주간 평균', '월간 평균', 'ECO 기준'],
       labels: {
       }
     },
@@ -59,22 +59,22 @@ const EnergyEverageCost = () => {
     {
     name: '전기',
     type: 'column',
-    data: [440, 505, 414, 671, 227, 413]
+    data: [14, 98, 392, 250]
     },
     {
       name: '물',
       type: 'column',
-      data: [440, 505, 414, 671, 227, 413]
+      data: [15, 105, 420,  275]
     },
     {
       name: '가스',
       type: 'column',
-      data: [440, 505, 414, 671, 227, 413]
+      data: [5, 35, 140, 90]
     },
     {
       name: '전체',
       type: 'line',
-      data: [900, 2200, 2500, 2000, 2300, 1200]
+      data: [50, 100, 250, 200]
     }
   ]
 

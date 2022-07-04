@@ -19,21 +19,21 @@ const ModalDetail = ({ open, handleModal }) => {
             <div className='number bg-smarty-red'>53</div>
             <div className='contents'>
               <div className='top'>
-                <h3>회로 차단기 트립</h3>
+                <h3>온도 감지</h3>
                 <Button className='btn primary'>나에게 배정</Button>
               </div>
               <div className='bottom'>
                 <div className='item'>
                   <div>발생일</div>
-                  <div>2022.02.20 09:10:33</div>
+                  <div>2022-07-05T05:51:38.077Z</div>
                 </div>
                 <div className='item'>
                   <div>수집일</div>
-                  <div>2022.02.20 09:15:33</div>
+                  <div>2022-07-05T05:51:38.077Z</div>
                 </div>
                 <div className='item'>
                   <div>횟수</div>
-                  <div>4</div>
+                  <div>1</div>
                 </div>
               </div>
             </div>
@@ -53,29 +53,29 @@ const ModalDetail = ({ open, handleModal }) => {
                   <th>알람 상태</th>
                   <td>Alarm</td>
                   <th>분류</th>
-                  <td>Emergency Lighting</td>
+                  <td>경고</td>
                   <th>SEQ-Number</th>
-                  <td>4,015,875</td>
+                  <td>ZA00000004</td>
                 </tr>
                 <tr>
                   <th>알람명</th>
-                  <td colSpan={5}>Emergency Lighting - A_18 Communication Fault Alarm</td>
+                  <td colSpan={5}>배터리 고온 알람 - 28.5</td>
                 </tr>
                 <tr>
                   <th>알람내용</th>
-                  <td colSpan={5}>A_18 Communication Fault Alarm</td>
+                  <td colSpan={5}>배터리 고온 알람 - 28.5</td>
                 </tr>
                 <tr>
                   <th>이전상태</th>
-                  <td colSpan={2}>Reset</td>
+                  <td colSpan={2}>-</td>
                   <th>평가상태</th>
-                  <td colSpan={2}>Upper Limit Alarm</td>
+                  <td colSpan={2}>-</td>
                 </tr>
                 <tr>
                   <th>변경횟수</th>
-                  <td colSpan={2}>2</td>
+                  <td colSpan={2}>0</td>
                   <th>배정시간</th>
-                  <td colSpan={2}>0000-00-00 00:00:00</td>
+                  <td colSpan={2}>-</td>
                 </tr>
                 <tr>
                   <th>기본상태</th>
@@ -91,7 +91,7 @@ const ModalDetail = ({ open, handleModal }) => {
                 </tr>
                 <tr>
                   <th>가용운영정책</th>
-                  <td colSpan={5}>Acknowledge, Disable, Recheck, Hide, Disable logging, Assign, Self assign, Add Comment</td>
+                  <td colSpan={5}>-</td>
                 </tr>
               </tbody>
             </Table>

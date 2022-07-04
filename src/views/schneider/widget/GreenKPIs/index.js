@@ -25,7 +25,7 @@ const GreenKPIs = () => {
                 <div className='division'><span>오늘</span></div>
                 <div className='summary'>
                   <div>110 Tons</div>
-                  <div>(2021 : <span>121 Tons</span>)</div>
+                  <div>(2022.07.06 : <span>121 Tons</span>)</div>
                 </div>
                 <div className='arrow'><span><FontAwesomeIcon icon={ faArrowDown } /></span></div>
               </div>
@@ -33,7 +33,7 @@ const GreenKPIs = () => {
                 <div className='division'><span>주간</span></div>
                 <div className='summary'>
                   <div>2,729 Tons</div>
-                  <div>(2021 : <span>2,811Tons</span>)</div>
+                  <div>(2022.07 : <span>2,811Tons</span>)</div>
                 </div>
                 <div className='arrow'><span><FontAwesomeIcon icon={ faArrowDown } /></span></div>
               </div>
@@ -41,7 +41,7 @@ const GreenKPIs = () => {
                 <div className='division'><span>월간</span></div>
                 <div className='summary'>
                   <div>9,918 Tons</div>
-                  <div>(2021 : <span>9,899 Tons</span>)</div>
+                  <div>(2022.07 : <span>9,899 Tons</span>)</div>
                 </div>
                 <div className='arrow up'><span><FontAwesomeIcon icon={ faArrowUp } /></span></div>
               </div>
@@ -49,7 +49,7 @@ const GreenKPIs = () => {
                 <div className='division'><span>연간</span></div>
                 <div className='summary'>
                   <div>61,820 Tons</div>
-                  <div>(2021 : <span>132,981 Tons</span>)</div>
+                  <div>(2022 : <span>132,981 Tons</span>)</div>
                 </div>
                 <div className='arrow'><span><FontAwesomeIcon icon={ faArrowDown } /></span></div>
               </div>

@@ -23,11 +23,11 @@ export default [
         title: '파워',
         navLink: '/dashboard/power'
       },
-      {
-        id: 'dashboardsFacilities',
-        title: '시설',
-        navLink: '/dashboard/facilities'
-      },
+//      {
+//        id: 'dashboardsFacilities',
+//        title: '시설',
+//        navLink: '/dashboard/facilities'
+//      },
       {
         id: 'dashboardsIT',
         title: 'IT',
