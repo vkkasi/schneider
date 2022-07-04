@@ -12,6 +12,9 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
+@import 'grid-layout.scss';
+
+
 body, .header-navbar, .navigation{
 	font-family: 'Noto Sans KR', "Montserrat", Helvetica, Arial, serif;
 }
@@ -1147,3 +1150,4 @@ ul.row-rank {
 .swiper-horizontal > .swiper-scrollbar {
 	bottom: -5px !important;
 }
+

@@ -13,7 +13,19 @@ import ColumnDistributed from './charts/ColumnDistributed'
 import RealtimeAlarm from '@src/views/schneider/widget/RealtimeAlarm'
 import CytoscapeMain from '@src/views/schneider/cytoscape'
 
+import GridLayoutMain from '../../../gridLayout'
+
 const Tab1F = () => {
+  const [rackIdx, setRackIdx] = useState('')
+
+  const onClickRack = (idx) => {
+    setRackIdx(idx)
+  }
+
+  const onClickBack = () => {
+    setRackIdx('')
+  }
+
   return (
     <>
       <Row className='match-height'>
@@ -25,7 +37,8 @@ const Tab1F = () => {
 					<Settings size={18} className='cursor-pointer' />
 				</CardHeader> */}
         <CardBody>
-					<CytoscapeMain useLayout='grid' floor='1'/>
+          {rackIdx === '' ? <GridLayoutMain onClickRack={onClickRack} /> : <CytoscapeMain useLayout='dagre' floor='1' onClickBack={onClickBack}/>}
+          {/* <WidgetGridCondition /> */}
 				</CardBody>
 			</Card>
         </Col>

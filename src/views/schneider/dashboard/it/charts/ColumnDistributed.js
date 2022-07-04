@@ -16,7 +16,8 @@ const ColumnDistributed = () => {
     '#D10CE8',
     '#008FFB',
     '#00E396',
-    '#FEB019'
+    '#FEB019',
+    '#008FFB',
   ]
 
   const options = {
@@ -47,17 +48,18 @@ const ColumnDistributed = () => {
     },
     xaxis: {
       categories: [
-        'R-101',
-        'R-102',
-        'R-103',
-        'R-104',
-        'R-105',
-        'R-106',
-        'R-107',
-        'R-108',
-        'R-109',
-        'R-110',
-        'R-111'
+        '서버-101',
+        '서버-102',
+        '서버-103',
+        '서버-104',
+        '서버-105',
+        '서버-106',
+        '서버-107',
+        '서버-108',
+        '서버-109',
+        '서버-110',
+        '서버-111',
+        '서버-112'
       ],
       title: {
         text: 'Rack'
@@ -84,18 +86,16 @@ const ColumnDistributed = () => {
 
   const series = [
     {
-      data: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+      data: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 90]
     }
   ]
-
-  console.log(series)
 
   return (
     <>
       <Card className='card-transaction'>
         <CardHeader>
           <div></div>
-          <CardTitle className='ta-c' tag='h4'>1F Rack 사용현황</CardTitle>
+          <CardTitle className='ta-c' tag='h4'>1F Rack 사용량 Hot Spot – 12</CardTitle>
           <Settings size={18} className='cursor-pointer' />
         </CardHeader>
         <CardBody>

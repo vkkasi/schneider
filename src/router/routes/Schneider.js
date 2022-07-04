@@ -8,6 +8,7 @@ const Installation = lazy(() => import('../../views/schneider/dashboard/installa
 const Resources = lazy(() => import('../../views/schneider/resources'))
 const Alarms = lazy(() => import('../../views/schneider/alarms'))
 const Reports = lazy(() => import('../../views/schneider/reports'))
+const GridLayout = lazy(() => import('../../views/gridLayout'))
 
 const SchneiderRoutes = [
   {
@@ -48,6 +49,11 @@ const SchneiderRoutes = [
   {
     path: '/reports',
     element: <Reports />,
+    exact: true
+  },
+  {
+    path: '/gridLayout',
+    element: <GridLayout />,
     exact: true
   }
 ]
