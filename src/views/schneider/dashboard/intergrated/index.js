@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { Row, Col } from 'reactstrap'
+import { Row, Col  } from 'reactstrap'
 import CompanyTable from './CompanyTable'
 import { ThemeColors } from '@src/utility/context/ThemeColors'
 import Earnings from '@src/views/ui-elements/cards/analytics/Earnings'
@@ -30,7 +30,7 @@ import IntergratedTemperatureHumidityState from '../../widget/IntergratedTempera
 import AlarmState from '../../widget/AlamState'
 import FacilityState from '../../widget/FacilityState'
 import RealtimeAlarm from '../../widget/RealtimeAlarm'
-
+import Weather from '@src/views/schneider/widget/weather'
 
 import '@styles/react/libs/charts/apex-charts.scss'
 import '@styles/base/pages/dashboard-ecommerce.scss'
@@ -54,7 +54,10 @@ const DashboardIntergrated = () => {
               <IntergratedPUE primary={context.colors.primary.main} danger={context.colors.danger.main} height={210} />
             </Col>
           </Row>
-          <IntergratedTemperatureHumidityState />
+          <Row className='match-height'>
+          <Col xs='8'><IntergratedTemperatureHumidityState /></Col>
+          <Col xs='4'><Weather /></Col>
+          </Row>
         </Col>
         <Col xs='4'>
 			    <RadarCharts title={'오늘 이벤트 분포도'}/>

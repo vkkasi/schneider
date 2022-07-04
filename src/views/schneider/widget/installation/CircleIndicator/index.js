@@ -7,7 +7,7 @@ const AlarmState = () => {
       <Card>
         <CardHeader>
           <div></div>
-          <CardTitle className='ta-c' tag='h4'>알람 위험 지수</CardTitle>
+          <CardTitle className='ta-c' tag='h4'>2F 온/습도 현황</CardTitle>
           <Settings size={18} className='cursor-pointer' />
         </CardHeader>
         <CardBody>

@@ -89,16 +89,16 @@ const EnergyUse2 = () => {
 
   const series = [
     {
-      name: 'data1',
-      data: getDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 10, { min: 10, max: 90 }).slice()
+      name: '물',
+      data: getDayWiseTimeSeries(new Date('05 Jul 2022 GMT').getTime(), 10, { min: 40, max: 50 }).slice()
     },
     {
-      name: 'data2',
-      data: getDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 10, { min: 10, max: 90 }).slice()
+      name: '가스',
+      data: getDayWiseTimeSeries(new Date('05 Jul 2022 GMT').getTime(), 10, { min: 10, max: 25 }).slice()
     },
     {
-      name: 'data3',
-      data: getDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 10, { min: 10, max: 90 }).slice()
+      name: '전기',
+      data: getDayWiseTimeSeries(new Date('05 Jul 2022 GMT').getTime(), 10, { min: 65, max: 85 }).slice()
     }
   ]
 
@@ -106,13 +106,13 @@ const EnergyUse2 = () => {
     const interval = setInterval(() => {
       ApexCharts.exec('realtime2', 'updateSeries', [
         {
-          data: getNewSeries({ min: 10, max: 90 }, series[0].data).slice()
+          data: getNewSeries({ min: 40, max: 50 }, series[0].data).slice()
         },
         {
-          data: getNewSeries({ min: 10, max: 90 }, series[1].data).slice()
+          data: getNewSeries({ min: 10, max: 25 }, series[1].data).slice()
         },
         {
-          data: getNewSeries({ min: 10, max: 90 }, series[2].data).slice()
+          data: getNewSeries({ min: 65, max: 85 }, series[2].data).slice()
         }
       ])
     }, 5000);
@@ -126,7 +126,7 @@ const EnergyUse2 = () => {
     <Card>
       <CardHeader>
         <div></div>
-        <CardTitle className='ta-c' tag='h4'>시간대별 온/습도</CardTitle>
+        <CardTitle className='ta-c' tag='h4'>2F 시간대별 전기/물/가스 사용량</CardTitle>
         <Settings size={18} className='cursor-pointer' />
       </CardHeader>
       <CardBody>
