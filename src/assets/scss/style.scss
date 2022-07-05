@@ -55,6 +55,10 @@ body, .header-navbar, .navigation{
 
 .modal-body {
 	padding: 1.4rem;
+
+	flex-flow: column;
+	justify-content: space-between;
+	align-content: space-around;
 }
 
 .apexcharts-text,
@@ -1155,4 +1159,38 @@ ul.row-rank {
 	max-height: 330px;
 	overflow-y: auto;
 	padding-right: 1rem;
+}
+
+
+.grid-layout-sample {
+	.card {
+		height: 100%;
+		margin: 0;
+	}
+	.card-header {
+		flex-shrink: 0;
+	}
+	.card-body {
+		// height: 100%;
+		overflow-y: auto;
+	}
+}
+
+
+.horizontal-menu-wrapper .buttons {
+	button {
+		height: 34px;
+	}
+
+	.icon img {
+		width: 18px;
+	}
+}
+
+.chart-radiabar {
+	position: absolute;
+	top: 50%;
+	font-size: 2.5rem;
+	margin-top: 19px;
+	transform: translateY(-50%);
 }

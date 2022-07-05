@@ -36,7 +36,7 @@ const Tab1F = () => {
 					<Settings size={18} className='cursor-pointer' />
 				</CardHeader> */}
         <CardBody>
-          {rackIdx === '' ? <GridLayoutMain onClickRack={onClickRack} /> : <CytoscapeMain useLayout='dagre' floor='1' onClickBack={onClickBack}/>}
+          {rackIdx === '' ? <GridLayoutMain section='it' onClickRack={onClickRack} /> : <CytoscapeMain useLayout='dagre' floor='1' onClickBack={onClickBack}/>}
           {/* <WidgetGridCondition /> */}
 				</CardBody>
 			</Card>

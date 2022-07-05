@@ -185,6 +185,14 @@ const HorizontalLayout = props => {
                 </Button>
               </a>
               <a
+                href="https://demo.ita.ecostruxureit.com/web/inventory"
+                target='_blank'
+                rel='noopener noreferrer'>
+                <Button size='sm'>
+                  <span className='icon'><img src='/images/icons/fms_link.jpg' alt='bms_link'/></span>ITA 바로가기
+                </Button>
+              </a>
+              <a
                 href="https://www.pmedemo.biz/web/"
                 target='_blank'
                 rel='noopener noreferrer'>

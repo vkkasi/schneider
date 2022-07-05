@@ -64,7 +64,7 @@ const ModalMemoAssignment = ({ open, handleModal }) => {
     //   console.log('err', err);
     // })
 
-    axios.get('http://15.164.145.174:8022/smsSend')
+    axios.get('http://www.boan2da.com/api/index.php?strApiName=apiSendSms')
     .then((res) => {
       console.log('res', res)
     })

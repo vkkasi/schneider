@@ -69,8 +69,9 @@ const SupportTracker = props => {
         }
       },
       stroke: {
-        dashArray: 8
-      }
+        dashArray: 3
+      },
+      labels: ['1.5'],
     },
     series = [50]
 
@@ -83,7 +84,8 @@ const SupportTracker = props => {
       </CardHeader>
       <CardBody>
         <Row>
-          <Col className='d-flex justify-content-center'>
+          <Col className='d-flex justify-content-center' style={{position: 'relative'}}>
+            <div className='chart-radiabar'>1.5</div>
             <Chart options={options} series={series} type='radialBar' height={props.height} id='support-tracker-card' />
           </Col>
         </Row>
