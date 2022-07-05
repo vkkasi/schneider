@@ -82,19 +82,19 @@ const AlarmState = () => {
             <Col>
               <div className='circle-indicator'>
                 <div className='circle'>
-                  <div className='value bg-smarty-blue' style={{ marginTop: '-20%' }}></div>
+                  <div className='value bg-smarty-red' style={{ marginTop: '-75%' }}></div>
                   <span className='title'>전력<br/>사용</span>
                 </div>
                 <div className='circle'>
-                  <div className='value bg-smarty-green' style={{ marginTop: '-40%' }}></div>
+                  <div className='value bg-smarty-blue' style={{ marginTop: '-45%' }}></div>
                   <span className='title'>물<br/>사용</span>
                 </div>
                 <div className='circle'>
-                  <div className='value bg-smarty-orange' style={{ marginTop: '-60%' }}></div>
+                  <div className='value bg-smarty-green' style={{ marginTop: '-18%' }}></div>
                   <span className='title'>가스<br/>사용</span>
                 </div>
                 <div className='circle'>
-                  <div className='value bg-smarty-red' style={{ marginTop: '-80%' }}></div>
+                  <div className='value bg-smarty-orange' style={{ marginTop: '-68%' }}></div>
                   <span className='title'>탄소<br/>배출</span>
                 </div>
               </div>

@@ -5,25 +5,25 @@ const IntergratedTemperatureHumidityState = () => {
   const transactionsArr1 = [
     {
       name: '외부',
-      temprature: '1.5',
+      temprature: '32°C',
       humidity: '40',
-      state: 0
-    },
-    {
-      name: '배터리',
-      temprature: '25.8',
-      humidity: '',
       state: 20
     },
     {
+      name: '배터리',
+      temprature: '22.8°C',
+      humidity: '0',
+      state: 10
+    },
+    {
       name: 'FCU',
-      temprature: '22.4',
+      temprature: '26.4°C',
       humidity: '28',
       state: 40
     },
     {
       name: 'AHU',
-      temprature: '36.2',
+      temprature: '24.2°C',
       humidity: '25',
       state: 0
     }
@@ -32,27 +32,27 @@ const IntergratedTemperatureHumidityState = () => {
   const transactionsArr2 = [
     {
       name: '시설',
-      temprature: '18',
+      temprature: '21.5°C',
       humidity: '22',
-      state: 0
+      state: 10
     },
     {
       name: 'Rack',
-      temprature: '31.8',
+      temprature: '22°C',
       humidity: '18',
       state: 10
     },
     {
       name: 'CRAC',
-      temprature: '22.9',
+      temprature: '22.9°C',
       humidity: '31',
-      state: 0
+      state: 10
     },
     {
       name: '배관',
-      temprature: '56',
-      humidity: '',
-      state: 30
+      temprature: '31°C',
+      humidity: '0',
+      state: 0
     }
   ]
 

@@ -7,39 +7,39 @@ const SystemCondition = () => {
     <Card>
       <CardHeader>
         <div></div>
-        <CardTitle className='ta-c' tag='h4'>시설 현황</CardTitle>
+        <CardTitle className='ta-c' tag='h4'>시설 평균 사용률 현황</CardTitle>
         <Settings size={18} className='cursor-pointer' />
       </CardHeader>
       <CardBody>
         <Table striped bordered className='intergrated-equipment-condition'>
           <thead>
             <tr>
-              <th>건물점유</th>
-              <th>건물모드</th>
-              <th>침입경보</th>
+              <th>1F 상면</th>
+              <th>2F 상면</th>
+              <th>3F 상면</th>
             </tr>
           </thead>
           <tbody>
           <tr>
-              <td>미점유</td>
-              <td>미구동</td>
-              <td>활성화</td>
+              <td>30%</td>
+              <td>60%</td>
+              <td>45%</td>
             </tr>
           </tbody>
         </Table>
         <Table striped bordered className='intergrated-equipment-condition mt-1'>
           <thead>
             <tr>
-              <th>AHU</th>
-              <th>Power Mode</th>
-              <th>Power</th>
+              <th>RACK </th>
+              <th>POWER </th>
+              <th>COOLING</th>
             </tr>
           </thead>
           <tbody>
           <tr>
-              <td>미구동</td>
-              <td>Low</td>
-              <td>75kW</td>
+              <td>50%</td>
+              <td>75%</td>
+              <td>80%</td>
             </tr>
           </tbody>
         </Table>

@@ -13,6 +13,8 @@ import '@styles/base/pages/dashboard-ecommerce.scss'
 // ** Styles
 import '@styles/react/apps/app-users.scss'
 
+import RealtimeAlarm from '../../widget/RealtimeAlarm'
+
 
 const DashboardIT = () => {
   const context = useContext(ThemeColors)
@@ -56,6 +58,11 @@ const DashboardIT = () => {
           {activeTab === '3' && 3}
         </TabPane>
       </TabContent>
+      <Row>
+        <Col>
+          <RealtimeAlarm cate={'IT'}></RealtimeAlarm>
+        </Col>
+      </Row>
     </div>
   )
 }

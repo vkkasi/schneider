@@ -40,11 +40,13 @@ const SupportTracker = props => {
           },
           dataLabels: {
             name: {
+              show:false,
               offsetY: -5,
               fontFamily: 'Montserrat',
               fontSize: '1rem'
             },
             value: {
+              show:false,
               offsetY: 15,
               fontFamily: 'Montserrat',
               fontSize: '1.714rem'
@@ -70,7 +72,7 @@ const SupportTracker = props => {
         dashArray: 8
       }
     },
-    series = [47]
+    series = [50]
 
   return data !== null ? (
     <Card>
@@ -87,13 +89,13 @@ const SupportTracker = props => {
         </Row>
         <div className='box-pue-text d-flex justify-content-center mt-1'>
           <div className='text-center bg-smarty-green'>
-            <span className='font-large-1 font-weight-bold'>1.5</span>
+            <span className='font-large-1 font-weight-bold'>1.2</span>
           </div>
           <div className='text-center bg-smarty-blue'>
-            <span className='font-large-1 font-weight-bold'>1.7</span>
+            <span className='font-large-1 font-weight-bold'>1.5</span>
           </div>
           <div className='text-center bg-smarty-red'>
-            <span className='font-large-1 font-weight-bold'>2.0</span>
+            <span className='font-large-1 font-weight-bold'>1.7</span>
           </div>
         </div>
       </CardBody>

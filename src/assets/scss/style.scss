@@ -1151,3 +1151,8 @@ ul.row-rank {
 	bottom: -5px !important;
 }
 
+.box-realtime-list {
+	max-height: 330px;
+	overflow-y: auto;
+	padding-right: 1rem;
+}

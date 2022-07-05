@@ -7,7 +7,7 @@ const PanelState = () => {
     <Card>
       <CardHeader>
         <div></div>
-        <CardTitle className='ta-c' tag='h4'>인입판넬 현황</CardTitle>
+        <CardTitle className='ta-c' tag='h4'>층간 메인판넬 현황</CardTitle>
         <Settings size={18} className='cursor-pointer' />
       </CardHeader>
       <CardBody>
@@ -27,7 +27,7 @@ const PanelState = () => {
           </thead>
           <tbody>
             <tr>
-              <th>PN – 001 (H)</th>
+              <th>PN - 1F – 001 (H)</th>
               <td>781</td>
               <td>95.0</td>
               <td>481</td>
@@ -38,7 +38,7 @@ const PanelState = () => {
               <td>1,228</td>
             </tr>
             <tr>
-              <th>PN – 002 (H)</th>
+              <th>PN - 2F – 001 (H)</th>
               <td>781</td>
               <td>95.0</td>
               <td>481</td>
@@ -49,7 +49,7 @@ const PanelState = () => {
               <td>1,228</td>
             </tr>
             <tr>
-              <th>PN – 003 (L)</th>
+              <th>PN - 1F – 002 (L)</th>
               <td>781</td>
               <td>95.0</td>
               <td>481</td>
@@ -60,7 +60,7 @@ const PanelState = () => {
               <td>1,228</td>
             </tr>
             <tr>
-              <th>PN – 004 (L)</th>
+              <th>PN - 2F – 002 (L)</th>
               <td>781</td>
               <td>95.0</td>
               <td>481</td>

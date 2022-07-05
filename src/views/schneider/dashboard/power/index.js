@@ -13,6 +13,8 @@ import CarbonState from '@src/views/schneider/widget/CarbonState'
 import PanelState from '@src/views/schneider/widget/PanelState'
 import EnergyEverageUse2 from '@src/views/schneider/widget/EnergyEverageUse2'
 
+import RealtimeAlarm from '../../widget/RealtimeAlarm'
+
 
 import '@styles/react/libs/charts/apex-charts.scss'
 import '@styles/base/pages/dashboard-ecommerce.scss'
@@ -49,7 +51,7 @@ const DashboardIntergrated = () => {
 			</Row>
 			<Row>
 				<Col>
-					<RealtimeEventState />
+				<RealtimeAlarm cate={'PO'}></RealtimeAlarm>
 				</Col>
 			</Row>
 		</div>

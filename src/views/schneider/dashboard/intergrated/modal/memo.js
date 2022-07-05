@@ -50,15 +50,15 @@ const ModalMemo = ({ open, handleModal }) => {
                   <tbody>
                     <tr>
                       <td>2</td>
-                      <td>Faulty Temperature Sensor</td>
-                      <td>Admin2</td>
-                      <td>2022.02.21<br />10:12:33</td>
+                      <td>센서 불안정 확인</td>
+                      <td>apcAdmin</td>
+                      <td>2022.06.21<br />10:12:33</td>
                     </tr>
                     <tr>
-                      <td></td>
-                      <td>Window Open</td>
-                      <td>Admin2</td>
-                      <td>2022.02.18<br />15:24:22</td>
+                      <td>1</td>
+                      <td>갑작스런 온도 변화</td>
+                      <td>apcAdmin</td>
+                      <td>2022.06.18<br />15:24:22</td>
                     </tr>
                   </tbody>
                 </Table>
@@ -76,9 +76,9 @@ const ModalMemo = ({ open, handleModal }) => {
                   <tbody>
                     <tr>
                       <td>1</td>
-                      <td>Called Central Plant technician</td>
-                      <td>Admin3</td>
-                      <td>2022.02.23<br />13:22:22</td>
+                      <td>센서 변경</td>
+                      <td>apcAdmin1</td>
+                      <td>2022.06.23<br />13:22:22</td>
                     </tr>
                   </tbody>
                 </Table>

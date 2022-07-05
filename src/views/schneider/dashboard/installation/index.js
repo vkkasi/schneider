@@ -9,6 +9,8 @@ import EnergyUse from '@src/views/schneider/widget/EnergyUse'
 import EnergyUse2 from '@src/views/schneider/widget/EnergyUse2'
 import HeatMap from '@src/views/schneider/widget/HeatMap'
 
+import RealtimeAlarm from '../../widget/RealtimeAlarm'
+
 import '@styles/react/libs/charts/apex-charts.scss'
 import '@styles/base/pages/dashboard-ecommerce.scss'
 
@@ -286,7 +288,11 @@ const DashboardIntergrated = () => {
       <Row className='match-height'>
         {renderWidget(list)}
       </Row>
-      <RealtimeEventState />
+      <Row>
+				<Col>
+				<RealtimeAlarm cate={'FA'}></RealtimeAlarm>
+				</Col>
+			</Row>
     </div>
   )
 }

@@ -75,10 +75,10 @@ const DashboardIntergrated = () => {
         </Col>
       </Row>
       <Row>
-        <Col>
-          <RealtimeAlarm></RealtimeAlarm>
-        </Col>
-      </Row>
+				<Col>
+				<RealtimeAlarm></RealtimeAlarm>
+				</Col>
+			</Row>
 
       {/* <Row className='match-height'>
         <Col>
