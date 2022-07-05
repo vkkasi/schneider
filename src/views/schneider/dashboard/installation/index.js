@@ -1,9 +1,11 @@
 import { useState } from 'react'
-import { Row, Col } from 'reactstrap'
+import { Row, Col,  Nav, NavItem, NavLink, } from 'reactstrap'
 
 //위젯
 import Widget from '@src/views/schneider/widget/installation/Widget'
 import CircleIndicator from '@src/views/schneider/widget/installation/CircleIndicator'
+import Cctv from '@src/views/schneider/widget/Cctv'
+import Cctv01 from '@src/views/schneider/widget/Cctv01'
 import RealtimeEventState from '@src/views/schneider/widget/RealtimeEventState'
 import EnergyUse from '@src/views/schneider/widget/EnergyUse'
 import EnergyUse2 from '@src/views/schneider/widget/EnergyUse2'
@@ -269,20 +271,47 @@ const DashboardIntergrated = () => {
     ))
   }
 
+    // ** States & Vars
+    const [activeTab, setActiveTab] = useState('2')
+
+    // ** Function to toggle tabs
+    const toggle = tab => setActiveTab(tab)
+
   return (
     <div id='dashboard-installation'>
+      <Nav pills>
+        <NavItem>
+          <NavLink active={activeTab === '1'} onClick={() => toggle('1')}>
+            <span className='align-middle d-none d-sm-block'>1F</span>
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink active={activeTab === '2'} onClick={() => toggle('2')}>
+            <span className='align-middle d-none d-sm-block'>2F</span>
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink active={activeTab === '3'} onClick={() => toggle('3')}>
+            <span className='align-middle d-none d-sm-block'>3F</span>
+          </NavLink>
+        </NavItem>
+      </Nav>
+      <hr />
       <CircleIndicator />
+      <Row className='match-height'>
+        <Col xs='12'>
+          <EnergyUse2 />
+        </Col>
+      </Row>
       <Row className='match-height'>
         <Col xs='6'>
           <EnergyUse />
         </Col>
-        <Col xs='6'>
-          <HeatMap />
+        <Col xs='3'>
+          <Cctv />
         </Col>
-      </Row>
-      <Row className='match-height'>
-        <Col xs='12'>
-          <EnergyUse2 />
+        <Col xs='3'>
+          <Cctv01 />
         </Col>
       </Row>
       <Row className='match-height'>
