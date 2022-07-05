@@ -7,55 +7,55 @@ import { useEffect, useState } from 'react';
 const IntergratedTemperatureHumidityState = () => {
   const transactionsArr1 = [
     {
-      name: '외부',
-      temprature: '32°C',
+      name: 'RACK-201',
+      temprature: '27.9°C',
       humidity: '40',
       state: 20
     },
     {
-      name: '배터리',
-      temprature: '22.8°C',
-      humidity: '0',
-      state: 10
+      name: 'UPS-211',
+      temprature: '27.8°C',
+      humidity: '40',
+      state: 20
     },
     {
-      name: 'FCU',
-      temprature: '26.4°C',
+      name: 'FCU-03',
+      temprature: '27.4°C',
       humidity: '28',
       state: 40
     },
     {
-      name: 'AHU',
-      temprature: '24.2°C',
+      name: 'AHU-001',
+      temprature: '27.2°C',
       humidity: '25',
-      state: 0
+      state: 40
     }
   ]
 
   const transactionsArr2 = [
     {
-      name: '시설',
-      temprature: '21.5°C',
+      name: 'PUPS-222',
+      temprature: '27.1°C',
       humidity: '22',
-      state: 10
+      state: 40
     },
     {
-      name: 'Rack',
-      temprature: '22°C',
+      name: 'RACK-207',
+      temprature: '27°C',
       humidity: '18',
       state: 10
     },
     {
-      name: 'CRAC',
-      temprature: '22.9°C',
+      name: 'CRAC-10',
+      temprature: '26.9°C',
       humidity: '31',
       state: 10
     },
     {
-      name: '배관',
-      temprature: '31°C',
+      name: 'CRAC-11',
+      temprature: '26.4°C',
       humidity: '0',
-      state: 0
+      state: 10
     }
   ]
 
@@ -96,7 +96,7 @@ const IntergratedTemperatureHumidityState = () => {
     <Card className='card-transaction'>
       <CardHeader>
         <div></div>
-        <CardTitle className='ta-c' tag='h4'>통합 온도/습도 현황</CardTitle>
+        <CardTitle className='ta-c' tag='h4'>실시간 온도 임계치 현황</CardTitle>
         <Settings size={18} className='cursor-pointer' />
       </CardHeader>
       <CardBody>

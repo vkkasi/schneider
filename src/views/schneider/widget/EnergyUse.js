@@ -8,7 +8,7 @@ import { Settings } from 'react-feather'
 
 import axios from 'axios'
 
-const EnergyUse = () => {
+const EnergyUse = ({ num }) => {
   const [temp, setTemp] = useState([])
   const [humi, setHumi] = useState([])
 
@@ -241,7 +241,7 @@ const EnergyUse = () => {
     <Card>
       <CardHeader>
         <div></div>
-        <CardTitle className='ta-c' tag='h4'>2F 시간대별 온/습도</CardTitle>
+        <CardTitle className='ta-c' tag='h4'>{ num }F 시간대별 온/습도</CardTitle>
         <Settings size={18} className='cursor-pointer' />
       </CardHeader>
       <CardBody>

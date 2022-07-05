@@ -3,7 +3,7 @@ import Chart from 'react-apexcharts'
 import { Card, CardHeader, CardTitle, CardBody, CardSubtitle } from 'reactstrap'
 import { Settings } from 'react-feather'
 
-const EnergyUse2 = () => {
+const EnergyUse2 = ({ num }) => {
   const TICKINTERVAL = 86400000
   const XAXISRANGE =  777600000
   
@@ -126,7 +126,7 @@ const EnergyUse2 = () => {
     <Card>
       <CardHeader>
         <div></div>
-        <CardTitle className='ta-c' tag='h4'>2F 시간대별 전기/물/가스 사용량</CardTitle>
+        <CardTitle className='ta-c' tag='h4'>{ num }F 시간대별 전기/물/가스 사용량</CardTitle>
         <Settings size={18} className='cursor-pointer' />
       </CardHeader>
       <CardBody>

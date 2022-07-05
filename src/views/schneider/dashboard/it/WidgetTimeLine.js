@@ -4,7 +4,7 @@ import { Settings } from 'react-feather'
 
 import Timeline from '@components/timeline'
 
-const WidgetTimeLine = () => {
+const WidgetTimeLine = ({ num }) => {
   const data = [
     {
       title: '백본 장비교체',
@@ -36,7 +36,7 @@ const WidgetTimeLine = () => {
     <Card>
       <CardHeader>
         <div></div>
-        <CardTitle className='ta-c' tag='h4'>1F 작업일정</CardTitle>
+        <CardTitle className='ta-c' tag='h4'>{num}F 작업일정</CardTitle>
         <Settings size={18} className='cursor-pointer' />
       </CardHeader>
       <CardBody>

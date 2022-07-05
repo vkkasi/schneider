@@ -6,6 +6,8 @@ import { Row, Col, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap
 
 import Tab1F from './Tab1F'
 import Tab2F from './Tab2F'
+import Tab3F from './Tab3F'
+import Tab4F from './Tab4F'
 
 import '@styles/react/libs/charts/apex-charts.scss'
 import '@styles/base/pages/dashboard-ecommerce.scss'
@@ -52,10 +54,10 @@ const DashboardIT = () => {
           {activeTab === '1' && <Tab1F />}
         </TabPane>
         <TabPane tabId='2'>
-          {activeTab === '2' && <Tab2F />}
+          {activeTab === '2' && <Tab3F />}
         </TabPane>
         <TabPane tabId='3'>
-          {activeTab === '3' && 3}
+          {activeTab === '3' && <Tab4F />}
         </TabPane>
       </TabContent>
       <Row>

@@ -18,14 +18,14 @@ const Label = () => (
   </>
 )
 
-const EquipmentSetting = () => {
+const EquipmentSetting = ({ num }) => {
   const [rSelected, setRSelected] = useState(1)
 
   return (
     <Card className='card-transaction'>
       <CardHeader>
         <div></div>
-        <CardTitle className='ta-c' tag='h4'>1F 시설 설정</CardTitle>
+        <CardTitle className='ta-c' tag='h4'>{num}F 시설 설정</CardTitle>
         <Settings size={18} className='cursor-pointer' />
       </CardHeader>
       <CardBody>

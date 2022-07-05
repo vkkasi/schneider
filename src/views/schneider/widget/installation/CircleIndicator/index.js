@@ -1,13 +1,13 @@
 import { Card, CardHeader, CardTitle, CardBody, Row, Col, ButtonGroup, Button, TabContent, TabPane } from 'reactstrap'
 import { Settings } from 'react-feather'
 
-const AlarmState = () => {
+const AlarmState = ({ num }) => {
   return (
     <>
       <Card>
         <CardHeader>
           <div></div>
-          <CardTitle className='ta-c' tag='h4'>2F 온/습도 현황</CardTitle>
+          <CardTitle className='ta-c' tag='h4'>{num}F 시설 현황</CardTitle>
           <Settings size={18} className='cursor-pointer' />
         </CardHeader>
         <CardBody>

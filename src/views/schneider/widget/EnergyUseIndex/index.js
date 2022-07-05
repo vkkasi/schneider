@@ -62,7 +62,7 @@ const AlarmState = () => {
     labels: ['Percent']
   }
 
-  const series = [100]
+  const series = [78]
 
   return (
     <>

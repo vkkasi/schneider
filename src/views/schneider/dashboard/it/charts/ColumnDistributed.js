@@ -4,7 +4,7 @@ import Chart from 'react-apexcharts'
 import { Card, CardHeader, CardTitle, CardBody } from 'reactstrap'
 import { Settings } from 'react-feather'
 
-const ColumnDistributed = () => {
+const ColumnDistributed = ({ num }) => {
   const colors = [
     '#008FFB',
     '#00E396',
@@ -48,18 +48,18 @@ const ColumnDistributed = () => {
     },
     xaxis: {
       categories: [
-        '서버-101',
-        '서버-102',
-        '서버-103',
-        '서버-104',
-        '서버-105',
-        '서버-106',
-        '서버-107',
-        '서버-108',
-        '서버-109',
-        '서버-110',
-        '서버-111',
-        '서버-112'
+        'RACK-101',
+        'RACK-102',
+        'RACK-103',
+        'RACK-104',
+        'RACK-105',
+        'RACK-106',
+        'RACK-107',
+        'RACK-108',
+        'RACK-109',
+        'RACK-110',
+        'RACK-111',
+        'RACK-112'
       ],
       title: {
         text: 'Rack'
@@ -86,7 +86,7 @@ const ColumnDistributed = () => {
 
   const series = [
     {
-      data: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 90]
+      data: [85, 89, 92, 92, 95, 95, 98, 100, 100, 100, 100, 100]
     }
   ]
 
@@ -95,7 +95,7 @@ const ColumnDistributed = () => {
       <Card className='card-transaction'>
         <CardHeader>
           <div></div>
-          <CardTitle className='ta-c' tag='h4'>1F Rack 사용량 Hot Spot – 12</CardTitle>
+          <CardTitle className='ta-c' tag='h4'>{num}F Rack 사용량 Hot Spot – 12</CardTitle>
           <Settings size={18} className='cursor-pointer' />
         </CardHeader>
         <CardBody>

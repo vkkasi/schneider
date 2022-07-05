@@ -44,18 +44,18 @@ const Tab1F = () => {
         <Col xs='6'>
           <Row className='match-height'>
             <Col xs='12'>
-              <ColumnDistributed />
+              <ColumnDistributed num={'1'}/>
             </Col>
             <Col xs='12'>
-              <RealtimeCondition />
+              <RealtimeCondition num={'1'}/>
             </Col>
             <Col xs='12'>
 				<Row className='match-height'>
 					<Col xs='6'>
-					<WidgetTimeLine />
+					<WidgetTimeLine num={'1'}/>
 					</Col>
 					<Col xs='6'>
-						<EquipmentSetting />
+						<EquipmentSetting num={'1'}/>
 					</Col>
 				</Row>
             </Col>

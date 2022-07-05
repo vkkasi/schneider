@@ -142,7 +142,7 @@ const Floor1 = ({ useLayout, onClickBack }) => {
 				content: function() {
 					const div = document.createElement('div');
 					div.classList.add('popper-div');
-					div.innerHTML = `<p>온도: ${ele.data().temp}도</p><p>습도: ${ele.data().humi}%</p>`;
+					div.innerHTML = `<p>온도: ${ele.data().temp}°C</p><p>습도: ${ele.data().humi}%</p>`;
 					document.body.appendChild(div);
 
 					return div;

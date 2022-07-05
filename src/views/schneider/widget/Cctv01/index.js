@@ -11,7 +11,7 @@ const Cctv = () => {
         <Settings size={18} className='cursor-pointer' />
       </CardHeader>
       <CardBody>
-        
+      <img className="install-img" alt="iPhone_01" src="/images/s02.jpg" />
       </CardBody>
     </Card>
   )

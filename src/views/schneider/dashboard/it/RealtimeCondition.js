@@ -7,7 +7,7 @@ import { kFormatter } from '@utils'
 
 import SubscribersGained from './charts/SubscribersGained'
 
-const RealtimeCondition = () => {
+const RealtimeCondition = ({ num }) => {
   function getRandomSeries(count, yrange) {
     let i = 0
     const series = []
@@ -23,16 +23,20 @@ const RealtimeCondition = () => {
 
   let i = 1;
   const datas = [];
+  const series1 = [27, 27, 28, 28, 28, 28, 28, 27, 27, 28, 28, 28, 28, 28];
 
   while (i < 13) {
     const series = getRandomSeries(7, {min: 0, max: 99})
+    
+    console.log(series)
+
     let color = '#ae2f41'
     if (0 < series[6] && series[6] < 24) color = '#017dba'
     if (25 < series[6] && series[6] < 49) color = '#459c4d'
     if (50 < series[6] && series[6] < 74) color = '#ffc105'
     const obj = {
-      title: `서버-1${i < 10 ? '0' : ''}${i}`,
-      subTitle: `${series[6]}도`,
+      title: `RACK-1${i < 10 ? '0' : ''}${i}`,
+      subTitle: `${series1[i]}°C`,
       color: color,
       series: [
         {
@@ -50,7 +54,7 @@ const RealtimeCondition = () => {
     <Card className='card-transaction'>
       <CardHeader>
         <div></div>
-        <CardTitle className='ta-c' tag='h4'>1F Rack 온도 Hot Spot – 12</CardTitle>
+        <CardTitle className='ta-c' tag='h4'>{num}F Rack 온도 Hot Spot – 12</CardTitle>
         <Settings size={18} className='cursor-pointer' />
       </CardHeader>
       <CardBody>

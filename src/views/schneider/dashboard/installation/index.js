@@ -42,7 +42,7 @@ const arrayWidget2 = [
   },
   {
     name: '설정 온도',
-    state: '25'
+    state: '25°C'
   },
   {
     name: '설정 습도',
@@ -69,7 +69,7 @@ const arrayWidget3 = [
   },
   {
     name: '배관 온도',
-    state: '21.5'
+    state: '21.5°C'
   },
   {
     name: '탱크 수위',
@@ -134,7 +134,7 @@ const arrayWidget5 = [
 const arrayWidget6 = [
   {
     name: '온도',
-    state: '22.8'
+    state: '22.8°C'
   },
   {
     name: '습도',
@@ -297,15 +297,15 @@ const DashboardIntergrated = () => {
         </NavItem>
       </Nav>
       <hr />
-      <CircleIndicator />
+      <CircleIndicator num={ activeTab }/>
       <Row className='match-height'>
         <Col xs='12'>
-          <EnergyUse2 />
+          <EnergyUse2  num={ activeTab }/>
         </Col>
       </Row>
       <Row className='match-height'>
         <Col xs='6'>
-          <EnergyUse />
+          <EnergyUse  num={ activeTab }/>
         </Col>
         <Col xs='3'>
           <Cctv />
