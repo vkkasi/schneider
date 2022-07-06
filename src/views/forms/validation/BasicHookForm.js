@@ -20,6 +20,7 @@ const BasicHookForm = () => {
   } = useForm()
 
   const onSubmit = data => {
+    console.log(Object.values(data))
     if (Object.values(data).every(field => field.length > 0)) {
       toast(
         <div className='d-flex'>

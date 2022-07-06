@@ -1,6 +1,8 @@
 import { Settings } from "react-feather";
 import RGL, { WidthProvider } from "react-grid-layout"
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+import _ from 'lodash'
 
 import { Button, Card, CardBody, CardHeader, CardTitle } from "reactstrap";
 import WidgetTimeLine from "../../schneider/dashboard/it/WidgetTimeLine";
@@ -10,51 +12,78 @@ import GreenKPIs from "../../schneider/widget/GreenKPIs";
 import Weather from "../../schneider/widget/weather";
 import RealtimeAlarm from "../../schneider/widget/RealtimeAlarm";
 
+import ModalAdd from '../modal/Add'
+
 const ReactGridLayout = WidthProvider(RGL);
 
-const Sample = () => {
-	const [layout, setLayout] = useState([
-		{ i: "101", x: 0, y: 0, w: 4, h: 9, widget : <WidgetTimeLine /> },
-		{ i: "102", x: 4, y: 0, w: 4, h: 9, widget : <EnergyUse /> },
-		{ i: "103", x: 8, y: 0, w: 4, h: 9, widget : <EnergyUse2 /> },
-		{ i: "104", x: 0, y: 1, w: 6, h: 9, widget : <GreenKPIs /> },
-		{ i: "105", x: 6, y: 1, w: 6, h: 9, widget : <Weather /> },
-		{ i: "106", x: 0, y: 2, w: 12, h: 15, widget : <RealtimeAlarm /> },
+const getComponent = (widgetName) => {
+  let switchComponent;
+  switch (widgetName) {
+    case 'weather':
+      switchComponent = <Weather />
+      break;
+    case 'reatimeAlarm':
+      switchComponent = <RealtimeAlarm />
+      break;
+    case 'timeUseAmount':
+      switchComponent = <EnergyUse />
+      break;
+    case 'workSchedule':
+      switchComponent = <WidgetTimeLine />
+      break;
+    case 'timeTempHumi':
+      switchComponent = <EnergyUse2 />
+      break;
+    case 'greenKpis':
+      switchComponent = <GreenKPIs />
+      break;
+  }
 
-		// { i: "101", x: 0, y: 0, w: 4, h: 9, widget : '<WidgetTimeLine />' },
-		// { i: "102", x: 4, y: 0, w: 4, h: 9, widget : '<EnergyUse />' },
-		// { i: "103", x: 8, y: 0, w: 4, h: 9, widget : '<EnergyUse2 />' },
-		// { i: "104", x: 0, y: 1, w: 6, h: 9, widget : '<GreenKPIs />' },
-		// { i: "105", x: 6, y: 1, w: 6, h: 9, widget : '<Weather />' },
-		// { i: "106", x: 0, y: 2, w: 12, h: 15, widget : '<RealtimeAlarm />' },
-	]);
+  return switchComponent
+}
+const Sample = () => {
+	const [isOpenAdd, setIsOpenAdd] = useState(false);
+	const [widgetData, setWidgetData] = useState([
+		{ i: "1", widget: 'greenKpis', layout: { i: "1", x: 0, y: 0, w: 4, h: 9 }},
+		{ i: "2", widget: 'weather', layout: { i: "2", x: 4, y: 0, w: 4, h: 9 }, },
+		{ i: "3", widget: 'workSchedule', layout:	{ i: "3", x: 8, y: 0, w: 4, h: 9 }, },
+		{ i: "4", widget: 'timeUseAmount', layout: { i: "4", x: 0, y: 1, w: 6, h: 9 }, },
+		{ i: "5", widget: 'timeTempHumi', layout: { i: "5", x: 6, y: 1, w: 6, h: 9 }, },
+		{ i: "6", widget: 'reatimeAlarm', layout: { i: "6", x: 0, y: 2, w: 12, h: 15 }, },
+	])
+	const [layout, setLayout] = useState([]);
+
+	const getWidgetName = (i) => {
+		return _.find(widgetData, item => item.i === i).widget
+	}
+
+	const gridRef = useRef();
 
 	const renderDOM = () => {
-		console.log(layout)
-		return layout.map((item) => {
+		return widgetData.map((item) => {
 			return (
 				<div key={item.i}>
-					{item.widget}
+					{getComponent(getWidgetName(item.i))}
 				</div>
 			)
 		})
 	}
 
-	const onClickAdd = () => {
-		console.log('layout', layout)
-		setLayout([
-			...layout,
-			{ i: "107", x: 6, y: 3, w: 4, h: 9, widget : <Weather /> },
-		]
-			
-			
-		)
+	const handleModalAdd = () => {
+		setIsOpenAdd(prev => !prev)
 	}
 
-	// const onLayoutChange = (layout) => {
-	// 	console.log(layout)
+	const onClickAdd = () => {
+		handleModalAdd()
+	}
 
-	// }
+	const onLayoutChange = (layout) => {
+		setLayout(layout);
+	}
+
+	useEffect(() => {
+		setLayout(_.map(widgetData, 'layout'));
+	}, [widgetData])
 
 	return (
 		<>
@@ -64,15 +93,12 @@ const Sample = () => {
 				layout={layout}
 				cols={12}
 				rowHeight={30}
+				onLayoutChange={onLayoutChange}
+				ref={gridRef}
 			>
-				{layout.map((item) => {
-					return (
-						<div key={item.i}>
-							{item.widget}
-						</div>
-					)
-				})}
+				{renderDOM()}
 			</ReactGridLayout>
+			<ModalAdd open={isOpenAdd} handleModal={handleModalAdd} widgetData={widgetData} setWidgetData={setWidgetData}/>
 		</>
 	)
 }
