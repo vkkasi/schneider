@@ -14,7 +14,7 @@ const selectOptions = [
   { value: 'greenKpis', label: 'Green KPI\'s' },
 ]
 
-const ModalMemoAssignment = ({ open, handleModal, widgetData, setWidgetData }) => {
+const ModalMemoAssignment = ({ open, handleModal, widgetData, setWidgetData, layout, setLayout }) => {
   // ** Hooks
   const {
     reset,
@@ -25,13 +25,18 @@ const ModalMemoAssignment = ({ open, handleModal, widgetData, setWidgetData }) =
   } = useForm()
 
   const onSubmit = (data) => {
-    console.log('data', data);
+    // console.log('data', data);
     if (Object.values(data).every(field => field.length > 0)) {
-      const LastLayout = widgetData[widgetData.length - 1].layout;
+      const LastLayout = layout[layout.length - 1];
 
       setWidgetData([
         ...widgetData,
-        { i: (parseInt(LastLayout.i) + 1).toString(), widget: data.widgetName, layout: { i: (parseInt(LastLayout.i) + 1).toString(), x: (LastLayout.x + LastLayout.w) === 12 ? 0 : LastLayout.x + LastLayout.w, y: Infinity, w: 3, h: 9 } },
+        { i: (parseInt(LastLayout.i) + 1).toString(), widget: data.widgetName },
+      ])
+
+      setLayout([
+        ...layout,
+        { i: (parseInt(LastLayout.i) + 1).toString(), x: (LastLayout.x + LastLayout.w) === 12 ? 0 : LastLayout.x + LastLayout.w, y: Infinity, w: 3, h: 9 },
       ])
 
       handleModal();

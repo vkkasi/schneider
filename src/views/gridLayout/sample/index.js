@@ -41,16 +41,19 @@ const getComponent = (widgetName) => {
 
   return switchComponent
 }
+
+const data = [
+	{ i: "1", widget: 'greenKpis', layout: { i: "1", x: 0, y: 0, w: 4, h: 9 }},
+	{ i: "2", widget: 'weather', layout: { i: "2", x: 4, y: 0, w: 4, h: 9 }, },
+	{ i: "3", widget: 'workSchedule', layout:	{ i: "3", x: 8, y: 0, w: 4, h: 9 }, },
+	{ i: "4", widget: 'timeUseAmount', layout: { i: "4", x: 0, y: 1, w: 6, h: 9 }, },
+	{ i: "5", widget: 'timeTempHumi', layout: { i: "5", x: 6, y: 1, w: 6, h: 9 }, },
+	{ i: "6", widget: 'reatimeAlarm', layout: { i: "6", x: 0, y: 2, w: 12, h: 15 }, },
+]
+
 const Sample = () => {
 	const [isOpenAdd, setIsOpenAdd] = useState(false);
-	const [widgetData, setWidgetData] = useState([
-		{ i: "1", widget: 'greenKpis', layout: { i: "1", x: 0, y: 0, w: 4, h: 9 }},
-		{ i: "2", widget: 'weather', layout: { i: "2", x: 4, y: 0, w: 4, h: 9 }, },
-		{ i: "3", widget: 'workSchedule', layout:	{ i: "3", x: 8, y: 0, w: 4, h: 9 }, },
-		{ i: "4", widget: 'timeUseAmount', layout: { i: "4", x: 0, y: 1, w: 6, h: 9 }, },
-		{ i: "5", widget: 'timeTempHumi', layout: { i: "5", x: 6, y: 1, w: 6, h: 9 }, },
-		{ i: "6", widget: 'reatimeAlarm', layout: { i: "6", x: 0, y: 2, w: 12, h: 15 }, },
-	])
+	const [widgetData, setWidgetData] = useState([])
 	const [layout, setLayout] = useState([]);
 
 	const getWidgetName = (i) => {
@@ -63,7 +66,7 @@ const Sample = () => {
 		return widgetData.map((item) => {
 			return (
 				<div key={item.i}>
-					{getComponent(getWidgetName(item.i))}
+					{getComponent(item.widget)}
 				</div>
 			)
 		})
@@ -81,9 +84,21 @@ const Sample = () => {
 		setLayout(layout);
 	}
 
+	// useEffect(() => {
+	// 	setLayout(_.map(widgetData, 'layout'));
+	// }, [widgetData])
+
 	useEffect(() => {
-		setLayout(_.map(widgetData, 'layout'));
-	}, [widgetData])
+		const tmpData = []
+		const tmpLayout = []
+		for (const key in data) {
+			tmpData.push({ i: data[key].i, widget: data[key].widget })
+			tmpLayout.push(data[key].layout)
+		}
+
+		setWidgetData(tmpData);
+		setLayout(tmpLayout);
+	}, [])
 
 	return (
 		<>
@@ -98,7 +113,7 @@ const Sample = () => {
 			>
 				{renderDOM()}
 			</ReactGridLayout>
-			<ModalAdd open={isOpenAdd} handleModal={handleModalAdd} widgetData={widgetData} setWidgetData={setWidgetData}/>
+			<ModalAdd open={isOpenAdd} handleModal={handleModalAdd} widgetData={widgetData} setWidgetData={setWidgetData} layout={layout} setLayout={setLayout}/>
 		</>
 	)
 }

@@ -40,7 +40,7 @@ const SystemCondition = () => {
     tmp = date.getHours();
     const hours = (tmp - 1 < 10) ? `0${tmp - 1}00` : `${tmp - 1}00`	// 시간
     const hours2 = (tmp < 10) ? `0${tmp}00` : `${tmp}00`	// 시간
-    console.log(year, month, day, hours)
+    // console.log(year, month, day, hours)
 
     setTime((tmp < 10) ? `0${tmp}:00` : `${tmp}:00`)
 

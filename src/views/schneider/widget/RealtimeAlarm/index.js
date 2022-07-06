@@ -84,7 +84,6 @@ const RealtimeAlarm = ({ cate }) => {
     fetch(`http://www.boan2da.com/api/index.php?strApiName=apiGetAlarmInfo&intPage=${intPage}&strCate=${strCate}`)
     .then(response => response.json())
     .then(response => {
-      console.log('response', response);
       setData(response.arrResultData.arrList)
     })
     .catch(error => {
@@ -93,7 +92,6 @@ const RealtimeAlarm = ({ cate }) => {
   }
   
   useEffect(() => {
-    console.log('cate', cate)
     getData(curruntPage, cate)
   }, [curruntPage])
 
