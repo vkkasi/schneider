@@ -1,4 +1,3 @@
-import { Settings } from "react-feather";
 import RGL, { WidthProvider } from "react-grid-layout"
 import { useEffect, useRef, useState } from "react";
 
@@ -35,8 +34,8 @@ const ReactGridLayout = WidthProvider(RGL);
 // ]
 
 const initData = [
-	{ widget: {idx: 1, widgetIdx: 100}, layout: { i: "1", x: 0, y: 0, w: 4, h: 9 } },
-	{ widget: {idx: 2, widgetIdx: 101}, layout: { i: "2", x: 4, y: 0, w: 4, h: 9 } },
+	{ widget: { idx: 1, widgetIdx: 100 }, layout: { i: "1", x: 0, y: 0, w: 4, h: 9 } },
+	{ widget: { idx: 2, widgetIdx: 101 }, layout: { i: "2", x: 4, y: 0, w: 4, h: 9 } },
 ]
 
 const getLocalStorage = (key) => {
@@ -83,18 +82,7 @@ const Sample = () => {
 
 	// 위젯 추가
 	const onClickWidgetAdd = () => {
-		const LastLayout = store.layout[store.layout.length - 1];
-		// console.log('LastLayout', LastLayout)
-
-		dispatch(setWidget([
-			...store.widget,
-			{ idx: parseInt(LastLayout.i) + 1, widgetIdx: 0 },
-		]))
-
-		dispatch(setLayout([
-			...store.layout,
-			{ i: (parseInt(LastLayout.i) + 1).toString(), x: (LastLayout.x + LastLayout.w) > 9 ? 0 : LastLayout.x + LastLayout.w, y: Infinity, w: 3, h: 9 },
-		]))
+		setIsOpenAdd(prev => !prev)
 	}
 
 	// 위치 리셋
@@ -125,7 +113,7 @@ const Sample = () => {
 	}, [dispatch])
 
 	useEffect(() => {
-		// console.log(store.layout)
+		console.log('store', store)
 		setLocalStorage(store.pageId, store.layout);
 	}, [store.layout])
 
@@ -133,7 +121,7 @@ const Sample = () => {
 		return store.widget.map((item) => {
 			return (
 				<div key={(item.idx).toString()}>
-					<WidgetContent idx={item.widgetIdx} handleModalSetting={handleModalSetting} />
+					<WidgetContent idx={item.widgetIdx} />
 				</div>
 			)
 		})
@@ -155,7 +143,7 @@ const Sample = () => {
 			>
 				{renderDOM()}
 			</ReactGridLayout>
-			{/* <ModalAdd open={isOpenAdd} handleModal={handleModalAdd} pageId={pageId} widgetData={widgetData} setWidgetData={setWidgetData} layout={layout} setLayout={setLayout} /> */}
+			<ModalAdd open={isOpenAdd} handleModal={handleModalAdd} />
 			<ModalSetting open={isOpenSetting} handleModal={handleModalSetting} />
 		</>
 	)

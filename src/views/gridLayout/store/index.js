@@ -12,10 +12,14 @@ import axios from 'axios'
 export const gridLayoutSlice = createSlice({
   name: 'gridLayout',
   initialState: {
+    pageId: '',
+    originLayout: [],
     widget: [],
     layout: [],
-    originLayout: [],
-    pageId: '',
+    tmpWidgetDetail: [
+      { idx: 100, type: 'weather', title: '날씨 위젯' },
+      { idx: 101, type: 'workSchedule', title: '작업 일정' },
+    ]
   },
   reducers: {
     setWidget: (state, action) => {
@@ -29,6 +33,12 @@ export const gridLayoutSlice = createSlice({
     },
     setPageId: (state, action) => {
       state.pageId = action.payload
+    },
+    setWidgetDetailInsert: (state, action) => {
+      state.tmpWidgetDetail = [
+        ...state.tmpWidgetDetail,
+        action.payload
+      ]
     },
     // getWidgetData: (state, action) => {
     //   state.widgetData = action.payload
@@ -45,6 +55,6 @@ export const gridLayoutSlice = createSlice({
   // }
 })
 
-export const { setWidget, setLayout, setOriginLayout, setPageId } = gridLayoutSlice.actions;
+export const { setWidget, setLayout, setOriginLayout, setPageId, setWidgetDetailInsert } = gridLayoutSlice.actions;
 
 export default gridLayoutSlice.reducer

@@ -3,6 +3,9 @@ import { selectThemeColors } from '@utils'
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button, Form, Input } from 'reactstrap'
 import Select from 'react-select'
 
+import { useDispatch, useSelector } from 'react-redux'
+import { setWidget, setLayout, setWidgetDetailInsert } from '../store'
+
 import { useForm, Controller } from 'react-hook-form';
 
 const selectOptions = [
@@ -14,8 +17,10 @@ const selectOptions = [
   { value: 'greenKpis', label: 'Green KPI\'s' },
 ]
 
-const ModalMemoAssignment = ({ open, handleModal, widgetData, setWidgetData, layout, setLayout }) => {
-  // ** Hooks
+const ModalMemoAssignment = ({ open, handleModal }) => {
+  const dispatch = useDispatch();
+  const store = useSelector(state => state.gridLayout);
+
   const {
     reset,
     control,
@@ -27,19 +32,21 @@ const ModalMemoAssignment = ({ open, handleModal, widgetData, setWidgetData, lay
   const onSubmit = (data) => {
     // console.log('data', data);
     if (Object.values(data).every(field => field.length > 0)) {
-      const LastLayout = layout[layout.length - 1];
+      const LastLayout = store.layout[store.layout.length - 1];
+      // console.log('LastLayout', LastLayout)
+      const date = new Date();
+      const tmpIdx = date.getTime();
 
-      console.log('LastLayout', LastLayout)
+      dispatch(setWidgetDetailInsert({ idx: tmpIdx, type: data.widgetType, title: data.widgetTitle }))
+      dispatch(setWidget([
+        ...store.widget,
+        { idx: tmpIdx, widgetIdx: tmpIdx },
+      ]))
 
-      setWidgetData([
-        ...widgetData,
-        { idx: (parseInt(LastLayout.i) + 1).toString(), widgetIdx: 0 },
-      ])
-
-      setLayout([
-        ...layout,
-        { i: (parseInt(LastLayout.i) + 1).toString(), x: (LastLayout.x + LastLayout.w) > 9 ? 0 : LastLayout.x + LastLayout.w, y: Infinity, w: 3, h: 9 },
-      ])
+      dispatch(setLayout([
+        ...store.layout,
+        { i: tmpIdx.toString(), x: (LastLayout.x + LastLayout.w) > 9 ? 0 : LastLayout.x + LastLayout.w, y: Infinity, w: 3, h: 9 },
+      ]))
 
       handleModal();
     } else {
@@ -59,6 +66,15 @@ const ModalMemoAssignment = ({ open, handleModal, widgetData, setWidgetData, lay
         <ModalHeader toggle={() => handleModal()}>위젯 추가</ModalHeader>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <ModalBody>
+            <div className='mb-1'>
+              <Controller
+                defaultValue=''
+                control={control}
+                id='widgetTitle'
+                name='widgetTitle'
+                render={({ field }) => <Input placeholder='위젯 제목' invalid={errors.widgetTitle && true} {...field} />}
+              />
+            </div>
             <Controller
               defaultValue=''
               control={control}
@@ -68,7 +84,7 @@ const ModalMemoAssignment = ({ open, handleModal, widgetData, setWidgetData, lay
                 ({ field }) => (<Select
                   isClearable={true}
                   theme={selectThemeColors}
-                  // defaultValue={[selectOptions[2], selectOptions[3]]}
+                  // defaultValue={['sdfsd']}
                   // isMulti
                   // name='colors'
                   options={selectOptions}

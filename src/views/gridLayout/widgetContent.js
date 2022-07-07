@@ -1,74 +1,40 @@
-import { Settings } from "react-feather";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+
+import { useSelector } from "react-redux";
 
 import _ from 'lodash'
 
-import { Button, Card, CardBody, CardHeader, CardTitle } from "reactstrap";
-import WidgetTimeLine from "@src/views/schneider/dashboard/it/WidgetTimeLine";
-import EnergyUse from "@src/views/schneider/widget/EnergyUse";
-import EnergyUse2 from "@src/views/schneider/widget/EnergyUse2";
-import GreenKPIs from "@src/views/schneider/widget/GreenKPIs";
-import Weather from "@src/views/schneider/widget/weather";
-import RealtimeAlarm from "@src/views/schneider/widget/RealtimeAlarm";
-import Default from "@src/views/schneider/widget/Default";
+import WidgetTimeLine from 	"@src/views/schneider/dashboard/it/WidgetTimeLine";
+import EnergyUse from 		"@src/views/schneider/widget/EnergyUse";
+import EnergyUse2 from 		"@src/views/schneider/widget/EnergyUse2";
+import GreenKPIs from 		"@src/views/schneider/widget/GreenKPIs";
+import Weather from 		"@src/views/schneider/widget/weather";
+import RealtimeAlarm from 	"@src/views/schneider/widget/RealtimeAlarm";
+import Default from 		"@src/views/schneider/widget/Default";
 
 // Modal
 import ModalSetting from './modal/Setting'
 
 import styled from "styled-components";
 
-const initData = [
-	{ idx: 100, type: 'weather', title: '날씨 위젯' },
-	{ idx: 101, type: 'workSchedule', title: '작업 일정' },
-]
-
-const getLocalStorage = (key) => {
-	let localStorage = {};
-	if (global.localStorage) {
-		try {
-			localStorage = JSON.parse(global.localStorage.getItem('gridLayout')) || {};
-		} catch (e) {
-			console.log(e);
-		}
-	}
-
-	return localStorage[key]
-}
-
-const setLocalStorage = (key, value) => {
-	if (global.localStorage) {
-		global.localStorage.setItem('gridLayout', JSON.stringify({
-			[key]: value
-		}))
-	}
-}
-
 const WidgetContent = ({ idx, handleModalSetting }) => {
-	const [isOpenAdd, setIsOpenAdd] = useState(false);
-	const [isOpenSetting, setIsOpenSetting] = useState(false);
-	const [widgetData, setWidgetData] = useState([])
-	const [layout, setLayout] = useState([]);
-	const [originalLayout, setOriginalLayout] = useState([]);
+	const [widgetDetail, setWidgetDetail] = useState([])
 
-	// const handleModalSetting = () => {
-	// 	setIsOpenSetting(prev => !prev)
-	// }
+	const store = useSelector(state => state.gridLayout);
 
 	useEffect(() => {
-		idx === 0 ? setWidgetData({ idx: 0, type: 'default' }) : setWidgetData(_.find(initData, {idx: idx}))
-	}, [])
+		const date = new Date();
+      	const tmpIdx = date.getTime();
 
-	const onClickSetting = () => {
-		console.log('onClickSetting')
-		handleModalSetting();
-	}
+		idx === 0 ? setWidgetDetail({ idx: tmpIdx, type: 'default' }) : setWidgetDetail(_.find(store.tmpWidgetDetail, {idx: idx}))
+	}, [])
 
 	const renderDOM = () => {
 	  let returnComponent = null;
 
-		switch (widgetData.type) {
+		switch (widgetDetail.type) {
 			case 'weather':
-				returnComponent = <Weather widget={widgetData} onClickSetting={handleModalSetting} />
+				returnComponent = <Weather />
 				break;
 			case 'reatimeAlarm':
 				returnComponent = <RealtimeAlarm />
@@ -86,7 +52,7 @@ const WidgetContent = ({ idx, handleModalSetting }) => {
 				returnComponent = <GreenKPIs />
 				break;
 			default:
-				returnComponent = <Default onClickSetting={handleModalSetting} />
+				returnComponent = <Default />
 				break;
 			}
 
