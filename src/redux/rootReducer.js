@@ -13,6 +13,8 @@ import ecommerce from '@src/views/apps/ecommerce/store'
 import dataTables from '@src/views/tables/data-tables/store'
 import permissions from '@src/views/apps/roles-permissions/store'
 
+import gridLayout from '@src/views/gridLayout/store'
+
 const rootReducer = {
   auth,
   todo,
@@ -26,7 +28,8 @@ const rootReducer = {
   calendar,
   ecommerce,
   dataTables,
-  permissions
+  permissions,
+  gridLayout
 }
 
 export default rootReducer

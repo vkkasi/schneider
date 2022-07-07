@@ -21,7 +21,7 @@ function useInterval(callback, delay) {
   }, [delay]);
 }
 
-const SystemCondition = () => {
+const Weather = ({ onClickSetting }) => {
   const [temp, setTemp] = useState('')
   const [humi, setHumi] = useState('')
   const [sky, setSky] = useState('')
@@ -84,7 +84,7 @@ const SystemCondition = () => {
       <CardHeader>
         <div></div>
         <CardTitle className='ta-c' tag='h4'>날씨 위젯</CardTitle>
-        <Settings size={18} className='cursor-pointer' />
+        <Settings size={18} className='cursor-pointer' onClick={() => onClickSetting()} />
       </CardHeader>
       <CardBody>
         <WidgetWeather>
@@ -100,7 +100,7 @@ const SystemCondition = () => {
   )
 }
 
-export default SystemCondition
+export default Weather
 
 const WidgetWeather = styled.div`
   display: flex;

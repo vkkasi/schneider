@@ -28,7 +28,7 @@ module.exports = {
 
     // Variable
     // 'init-declarations': 'error',
-    'no-use-before-define': 'error',
+    // 'no-use-before-define': 'error',
 
     // 'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z]' }],
 
