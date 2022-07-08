@@ -26,6 +26,15 @@ export const gridLayoutSlice = createSlice({
       { idx: 104, type: 'energyUse', title: '전기/물/ 사용량' },
       { idx: 105, type: 'energyUse2', title: '온/습도 현황' },
       { idx: 106, type: 'heatMap', title: '온도 현황' },
+    ],
+    selectOptions: [
+      { value: 'weather', label: '날씨' },
+      { value: 'reatimeAlarm', label: '실시간 알람' },
+      { value: 'timeLine', label: '작업일정' },
+      { value: 'greenKPIs', label: 'Green KPI\'s' },
+      { value: 'energyUse', label: '시간대별 전기/물/가스 사용량' },
+      { value: 'energyUse2', label: '시간대별 온/습도' },
+      { value: 'heatMap', label: '온도 현황' },
     ]
   },
   reducers: {

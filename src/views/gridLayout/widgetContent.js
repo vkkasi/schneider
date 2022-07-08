@@ -10,12 +10,11 @@ import EnergyUse from "@src/views/schneider/widgets/energyUse";
 import EnergyUse2 from "@src/views/schneider/widgets/energyUse2";
 import GreenKPIs from "@src/views/schneider/widgets/greenKPIs";
 import RealtimeAlarm from "@src/views/schneider/widgets/realtimeAlarm";
+import HeatMap from "@src/views/schneider/widgets/heatMap";
 import Default from "@src/views/schneider/widgets/default";
 
 // Modal
 import ModalSetting from './modal/Setting'
-
-import styled from "styled-components";
 
 const WidgetContent = ({ idx }) => {
 	const [widgetDetail, setWidgetDetail] = useState(null)
@@ -57,10 +56,13 @@ const WidgetContent = ({ idx }) => {
 			case 'greenKPIs':
 				returnComponent = <GreenKPIs widgetDetail={widgetDetail} onClickSetting={onClickSetting} />
 				break;
+			case 'heatMap':
+				returnComponent = <HeatMap widgetDetail={widgetDetail} onClickSetting={onClickSetting} />
+				break;
 			default:
 				returnComponent = <Default widgetDetail={widgetDetail} onClickSetting={onClickSetting} />
 				break;
-			}
+		}
 
 	  return returnComponent
 	}
@@ -75,9 +77,3 @@ const WidgetContent = ({ idx }) => {
 }
 
 export default WidgetContent
-
-const TopButtonsBox = styled.div`
-	> button + button {
-		margin-left: .5rem;
-	}
-`

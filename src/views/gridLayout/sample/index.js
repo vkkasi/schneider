@@ -3,13 +3,10 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { setWidget, setLayout, setOriginLayout, setPageId } from '../store'
 
-import _ from 'lodash'
-
 import { Button } from "reactstrap";
 
 // Modal
 import ModalAdd from '../modal/Add'
-import ModalSetting from '../modal/Setting'
 
 import WidgetContent from "../widgetContent";
 
@@ -17,15 +14,6 @@ import styled from "styled-components";
 
 import RGL, { WidthProvider } from "react-grid-layout"
 const ReactGridLayout = WidthProvider(RGL);
-
-// const originalData = [
-// 	{ id: "1", widget: 'greenKpis', layout: { i: "1", x: 0, y: 0, w: 4, h: 9 } },
-// 	{ id: "2", widget: 'weather', layout: { i: "2", x: 4, y: 0, w: 4, h: 9 } },
-// 	{ id: "3", widget: 'workSchedule', layout:	{ i: "3", x: 8, y: 0, w: 4, h: 9 } },
-// 	{ id: "4", widget: 'timeUseAmount', layout: { i: "4", x: 0, y: 1, w: 6, h: 9 } },
-// 	{ id: "5", widget: 'timeTempHumi', layout: { i: "5", x: 6, y: 1, w: 6, h: 9 } },
-// 	{ id: "6", widget: 'reatimeAlarm', layout: { i: "6", x: 0, y: 2, w: 12, h: 15 } },
-// ]
 
 const initData = [
 	{ widget: { idx: 1, widgetIdx: 100 }, layout: { i: "1", x: 0, y: 0, w: 4, h: 9 } },
@@ -57,24 +45,14 @@ const setLocalStorage = (key, value) => {
 
 const Sample = () => {
 	const [isOpenAdd, setIsOpenAdd] = useState(false);
-	const [isOpenSetting, setIsOpenSetting] = useState(false);
-	const [render, setRender] = useState(null);
 
 	const dispatch = useDispatch();
 	const store = useSelector(state => state.gridLayout)
 
 	dispatch(setPageId('sample'));
 
-	// const getWidgetName = (i) => {
-	// 	return _.find(widgetData, item => item.i === i).widget
-	// }
-
 	const handleModalAdd = () => {
 		setIsOpenAdd(prev => !prev)
-	}
-
-	const handleModalSetting = () => {
-		setIsOpenSetting(prev => !prev)
 	}
 
 	// 위젯 추가
@@ -140,7 +118,6 @@ const Sample = () => {
 				{renderDOM()}
 			</ReactGridLayout>
 			<ModalAdd open={isOpenAdd} handleModal={handleModalAdd} />
-			{/* <ModalSetting open={isOpenSetting} handleModal={handleModalSetting} /> */}
 		</>
 	)
 }

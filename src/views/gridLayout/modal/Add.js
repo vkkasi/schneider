@@ -1,22 +1,13 @@
-import { useState } from 'react'
 import { selectThemeColors } from '@utils'
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button, Form, Input } from 'reactstrap'
 import Select from 'react-select'
+
+import _ from 'lodash'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { setWidget, setLayout, setWidgetDetailInsert } from '../store'
 
 import { useForm, Controller } from 'react-hook-form';
-
-const selectOptions = [
-  { value: 'weather', label: '날씨' },
-  { value: 'reatimeAlarm', label: '실시간 알람' },
-  { value: 'timeLine', label: '작업일정' },
-  { value: 'greenKPIs', label: 'Green KPI\'s' },
-  { value: 'energyUse', label: '시간대별 전기/물/가스 사용량' },
-  { value: 'energyUse2', label: '시간대별 온/습도' },
-  { value: 'heatMap', label: '온도 현황' },
-]
 
 const ModalMemoAssignment = ({ open, handleModal }) => {
   const dispatch = useDispatch();
@@ -32,7 +23,7 @@ const ModalMemoAssignment = ({ open, handleModal }) => {
 
   const onSubmit = (data) => {
     // console.log('data', data);
-    if (Object.values(data).every(field => field.length > 0)) {
+    if (_.every(data, field => field.length > 0)) {
       const LastLayout = store.layout[store.layout.length - 1];
       // console.log('LastLayout', LastLayout)
       const date = new Date();
@@ -88,11 +79,10 @@ const ModalMemoAssignment = ({ open, handleModal }) => {
                   // defaultValue={['sdfsd']}
                   // isMulti
                   // name='colors'
-                  options={selectOptions}
+                  options={store.selectOptions}
                   className='react-select'
                   classNamePrefix='select'
-                  inputRef={field.ref}
-                  value={selectOptions.find(c => c.value === field.value)}
+                  value={_.find(store.selectOptions, {value: field.value})}
                   onChange={val => field.onChange(val.value)}
                 />)
               }

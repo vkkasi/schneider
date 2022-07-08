@@ -7,23 +7,13 @@ import { useForm, Controller } from 'react-hook-form';
 import _  from 'lodash'
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setWidget, setLayout, setWidgetDetailUpdate, setOriginLayout, setPageId } from '../store'
-
-const selectOptions = [
-  { value: 'weather', label: '날씨' },
-  { value: 'reatimeAlarm', label: '실시간 알람' },
-  { value: 'timeLine', label: '작업일정' },
-  { value: 'greenKPIs', label: 'Green KPI\'s' },
-  { value: 'energyUse', label: '시간대별 전기/물/가스 사용량' },
-  { value: 'energyUse2', label: '시간대별 온/습도' },
-  { value: 'heatMap', label: '온도 현황' },
-]
+import { setWidgetDetailUpdate } from '../store'
 
 const ModalSetting = ({ idx, open, handleModal }) => {
   if (!open) return null;
 
   const [widgetData, setWidgetData] = useState(null)
-
+ 
   const dispatch = useDispatch();
   const store = useSelector(state => state.gridLayout)
 
@@ -38,6 +28,7 @@ const ModalSetting = ({ idx, open, handleModal }) => {
 
   useEffect(() => {
     setWidgetData(_.find(store.tmpWidgetDetail, {idx: idx}))
+    
   }, [])
 
   const onSubmit = (data) => {
@@ -82,14 +73,14 @@ const ModalSetting = ({ idx, open, handleModal }) => {
                 ({ field }) => (<Select
                   isClearable
                   theme={selectThemeColors}
-                  defaultValue={_.find(selectOptions, {value: widgetData.type})}
+                  defaultValue={_.find(store.selectOptions, {value: widgetData.type})}
                   // isMulti
                   // name='colors'
-                  options={selectOptions}
+                  options={store.selectOptions}
                   className='react-select'
                   classNamePrefix='select'
                   inputRef={field.ref}
-                  value={selectOptions.find(c => c.value === field.value)}
+                  value={_.find(store.selectOptions, {value: field.value})}
                   onChange={val => field.onChange(val.value)}
                 />)
               }
