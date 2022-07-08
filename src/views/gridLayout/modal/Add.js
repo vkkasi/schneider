@@ -11,10 +11,11 @@ import { useForm, Controller } from 'react-hook-form';
 const selectOptions = [
   { value: 'weather', label: '날씨' },
   { value: 'reatimeAlarm', label: '실시간 알람' },
-  { value: 'timeUseAmount', label: '시간대별 전기/물/가스 사용량' },
-  { value: 'workSchedule', label: '작업일정' },
-  { value: 'timeTempHumi', label: '시간대별 온/습도' },
-  { value: 'greenKpis', label: 'Green KPI\'s' },
+  { value: 'timeLine', label: '작업일정' },
+  { value: 'greenKPIs', label: 'Green KPI\'s' },
+  { value: 'energyUse', label: '시간대별 전기/물/가스 사용량' },
+  { value: 'energyUse2', label: '시간대별 온/습도' },
+  { value: 'heatMap', label: '온도 현황' },
 ]
 
 const ModalMemoAssignment = ({ open, handleModal }) => {

@@ -1,27 +1,21 @@
-import RGL, { WidthProvider } from "react-grid-layout"
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useSelector, useDispatch } from 'react-redux'
 import { setWidget, setLayout, setOriginLayout, setPageId } from '../store'
 
 import _ from 'lodash'
 
-import { Button, Card, CardBody, CardHeader, CardTitle } from "reactstrap";
-import WidgetTimeLine from "../../schneider/dashboard/it/WidgetTimeLine";
-import EnergyUse from "../../schneider/widget/EnergyUse";
-import EnergyUse2 from "../../schneider/widget/EnergyUse2";
-import GreenKPIs from "../../schneider/widget/GreenKPIs";
-import Weather from "../../schneider/widget/weather";
-import RealtimeAlarm from "../../schneider/widget/RealtimeAlarm";
-
-import WidgetContent from "../widgetContent";
+import { Button } from "reactstrap";
 
 // Modal
 import ModalAdd from '../modal/Add'
 import ModalSetting from '../modal/Setting'
 
+import WidgetContent from "../widgetContent";
+
 import styled from "styled-components";
 
+import RGL, { WidthProvider } from "react-grid-layout"
 const ReactGridLayout = WidthProvider(RGL);
 
 // const originalData = [
@@ -35,7 +29,9 @@ const ReactGridLayout = WidthProvider(RGL);
 
 const initData = [
 	{ widget: { idx: 1, widgetIdx: 100 }, layout: { i: "1", x: 0, y: 0, w: 4, h: 9 } },
-	{ widget: { idx: 2, widgetIdx: 101 }, layout: { i: "2", x: 4, y: 0, w: 4, h: 9 } },
+	{ widget: { idx: 2, widgetIdx: 102 }, layout: { i: "2", x: 4, y: 0, w: 4, h: 9 } },
+	{ widget: { idx: 3, widgetIdx: 103 }, layout: { i: "3", x: 8, y: 0, w: 4, h: 9 } },
+	{ widget: { idx: 4, widgetIdx: 101 }, layout: { i: "4", x: 0, y: 1, w: 12, h: 9 } },
 ]
 
 const getLocalStorage = (key) => {
@@ -62,6 +58,7 @@ const setLocalStorage = (key, value) => {
 const Sample = () => {
 	const [isOpenAdd, setIsOpenAdd] = useState(false);
 	const [isOpenSetting, setIsOpenSetting] = useState(false);
+	const [render, setRender] = useState(null);
 
 	const dispatch = useDispatch();
 	const store = useSelector(state => state.gridLayout)
@@ -113,7 +110,7 @@ const Sample = () => {
 	}, [dispatch])
 
 	useEffect(() => {
-		console.log('store', store)
+		// console.log('store', store)
 		setLocalStorage(store.pageId, store.layout);
 	}, [store.layout])
 
@@ -133,7 +130,6 @@ const Sample = () => {
 				<Button onClick={() => onClickWidgetAdd()}>위젯 추가</Button>
 				<Button onClick={() => onClickLayoutReset()}>위치 리셋</Button>
 			</TopButtonsBox>
-			
 			<ReactGridLayout
 				className="grid-layout-sample"
 				layout={store.layout}
@@ -144,7 +140,7 @@ const Sample = () => {
 				{renderDOM()}
 			</ReactGridLayout>
 			<ModalAdd open={isOpenAdd} handleModal={handleModalAdd} />
-			<ModalSetting open={isOpenSetting} handleModal={handleModalSetting} />
+			{/* <ModalSetting open={isOpenSetting} handleModal={handleModalSetting} /> */}
 		</>
 	)
 }

@@ -4,15 +4,15 @@ import { Settings } from 'react-feather'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons'
 
-const GreenKPIs = () => {
+const GreenKPIs = ({ widgetDetail, onClickSetting }) => {
 
   return (
     <>
       <Card className='card-green-kpis'>
         <CardHeader>
           <div></div>
-          <CardTitle className='ta-c' tag='h4'>Green KPI's</CardTitle>
-          <Settings size={18} className='cursor-pointer' />
+          <CardTitle className='ta-c' tag='h4'>{widgetDetail.title}</CardTitle>
+          <Settings size={18} className='cursor-pointer' onClick={() => onClickSetting()} />
         </CardHeader>
         <CardBody>
           <Row>

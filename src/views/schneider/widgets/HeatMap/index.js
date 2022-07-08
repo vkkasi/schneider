@@ -1,19 +1,18 @@
-/* eslint-disable no-var */
 import Chart from 'react-apexcharts'
 
 import { Card, CardHeader, CardTitle, CardBody } from 'reactstrap'
 import { Settings } from 'react-feather'
 
 function generateData(count, yrange) {
-	var i = 0;
-	var series = [];
+	let i = 0;
+	const series = [];
 	while (i < count) {
-	  var x = (i + 1).toString();
-	  var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+	  const x = (i + 1).toString();
+	  const y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
   
 	  series.push({
-		x: x,
-		y: y
+			x: x,
+			y: y
 	  });
 	  i++;
 	}
@@ -22,7 +21,7 @@ function generateData(count, yrange) {
 	return series;
 }
 
-const HeatMap = () => {
+const HeatMap = ({ widgetDetail, onClickSetting }) => {
   const options = {
 	chart: {
 		type: 'heatmap',
@@ -222,8 +221,8 @@ const HeatMap = () => {
       <Card className='card-green-kpis'>
         <CardHeader>
           <div></div>
-          <CardTitle className='ta-c' tag='h4'>온도맵</CardTitle>
-          <Settings size={18} className='cursor-pointer' />
+          <CardTitle className='ta-c' tag='h4'>{widgetDetail.title}</CardTitle>
+          <Settings size={18} className='cursor-pointer' onClick={() => onClickSetting()} />
         </CardHeader>
         <CardBody>
           <div className='box-chart'>

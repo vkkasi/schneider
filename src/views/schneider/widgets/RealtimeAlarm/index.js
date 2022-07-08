@@ -9,13 +9,15 @@ import ModalAssignment from '../../dashboard/intergrated/modal/Assignment'
 import { getDatasetAtEvent } from 'react-chartjs-2'
 import { get } from 'jquery'
 
-const RealtimeAlarm = ({ cate }) => {
+const RealtimeAlarm = ({ widgetDetail, onClickSetting }) => {
   const [activeModalDetail, setActiveModalDetail] = useState(false)
   const [activeModalMemo, setActiveModalMemo] = useState(false)
   const [activeModalOpinion, setActiveModalOpinion] = useState(false)
   const [activeModalAssignment, setActiveModalAssignment] = useState(false)
   const [curruntPage, setCurruntPage] = useState('1')
   const [data, setData] = useState(null)
+
+  const cate = ''
 
   const handleModalDetail = () => {
     setActiveModalDetail(prev => !prev)
@@ -100,8 +102,8 @@ const RealtimeAlarm = ({ cate }) => {
       <Card className='card-realtime-alarm'>
         <CardHeader>
           <div></div>
-          <CardTitle className='ta-c' tag='h4'>실시간 알람</CardTitle>
-          <Settings size={18} className='cursor-pointer' />
+          <CardTitle className='ta-c' tag='h4'>{widgetDetail.title}</CardTitle>
+          <Settings size={18} className='cursor-pointer' onClick={() => onClickSetting()} />
         </CardHeader>
         <CardBody>
           <div className='divide'>

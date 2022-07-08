@@ -1,6 +1,8 @@
 // ** Redux Imports
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
+import _ from 'lodash'
+
 // ** Axios Imports
 import axios from 'axios'
 
@@ -18,7 +20,12 @@ export const gridLayoutSlice = createSlice({
     layout: [],
     tmpWidgetDetail: [
       { idx: 100, type: 'weather', title: '날씨 위젯' },
-      { idx: 101, type: 'workSchedule', title: '작업 일정' },
+      { idx: 101, type: 'reatimeAlarm', title: '실시간 알람' },
+      { idx: 102, type: 'timeLine', title: '작업 일정' },
+      { idx: 103, type: 'greenKPIs', title: 'Green KPI\'s' },
+      { idx: 104, type: 'energyUse', title: '전기/물/ 사용량' },
+      { idx: 105, type: 'energyUse2', title: '온/습도 현황' },
+      { idx: 106, type: 'heatMap', title: '온도 현황' },
     ]
   },
   reducers: {
@@ -40,10 +47,11 @@ export const gridLayoutSlice = createSlice({
         action.payload
       ]
     },
-    // getWidgetData: (state, action) => {
-    //   state.widgetData = action.payload
-    // }
+    setWidgetDetailUpdate: (state, action) => {
+      const newTmpWidgetDetail = state.tmpWidgetDetail.map(item => (item.idx === action.payload.idx ? action.payload : item));
 
+      state.tmpWidgetDetail = newTmpWidgetDetail;
+    },
   },
   // extraReducers: builder => {
   //   builder.addCase(getData.fulfilled, (state, action) => {
@@ -55,6 +63,6 @@ export const gridLayoutSlice = createSlice({
   // }
 })
 
-export const { setWidget, setLayout, setOriginLayout, setPageId, setWidgetDetailInsert } = gridLayoutSlice.actions;
+export const { setWidget, setLayout, setOriginLayout, setPageId, setWidgetDetailInsert, setWidgetDetailUpdate } = gridLayoutSlice.actions;
 
 export default gridLayoutSlice.reducer

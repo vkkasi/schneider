@@ -3,25 +3,12 @@ import { Card, CardHeader, CardTitle, CardBody, Table } from 'reactstrap'
 import { Settings } from 'react-feather'
 import styled from 'styled-components'
 
-// setInterval state 문제 해결
-function useInterval(callback, delay) {
-  const savedCallback = useRef();
+import { useInterval } from '@hooks/useInterval'
 
-  useEffect(() => {
-    savedCallback.current = callback;
-  });
+const APIKey = 'FfOFAORgfXGq7hk%2FD0i8pglsdu%2FNc9WdGGQzwWGA8uK3n7XZo55cY75JV7sqwpWLcqYics7%2B%2FEqNJOgCLDs%2FFw%3D%3D'
+const initJSON = { nx: '61', ny: '125', pageNo: '1', numOfRows: '1000', dataType: 'JSON' }
 
-  useEffect(() => {
-    function tick() {
-      savedCallback.current();
-    }
-
-    const id = setInterval(tick, delay);
-    return () => clearInterval(id);
-  }, [delay]);
-}
-
-const Weather = ({ onClickSetting }) => {
+const Weather = ({ widgetDetail, onClickSetting }) => {
   const [temp, setTemp] = useState('')
   const [humi, setHumi] = useState('')
   const [sky, setSky] = useState('')
@@ -44,7 +31,7 @@ const Weather = ({ onClickSetting }) => {
 
     setTime((tmp < 10) ? `0${tmp}:00` : `${tmp}:00`)
 
-    fetch(`https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst?serviceKey=FfOFAORgfXGq7hk%2FD0i8pglsdu%2FNc9WdGGQzwWGA8uK3n7XZo55cY75JV7sqwpWLcqYics7%2B%2FEqNJOgCLDs%2FFw%3D%3D&pageNo=1&numOfRows=1000&dataType=JSON&base_date=${year}${month}${day}&base_time=${hours}&nx=61&ny=125`)
+    fetch(`https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst?serviceKey=${APIKey}&pageNo=${initJSON.pageNo}&numOfRows=${initJSON.numOfRows}&dataType=${initJSON.dataType}&base_date=${year}${month}${day}&base_time=${hours}&nx=61&ny=125`)
     .then(response => response.json())
     .then(response => {
       // console.log(response.response.body.items.item)
@@ -73,7 +60,7 @@ const Weather = ({ onClickSetting }) => {
 
   useInterval(() => {
     getWeather();
-  }, 600000);
+  }, 60000);
 
   useEffect(() => {
     getWeather();
@@ -83,7 +70,7 @@ const Weather = ({ onClickSetting }) => {
     <Card>
       <CardHeader>
         <div></div>
-        <CardTitle className='ta-c' tag='h4'>날씨 위젯</CardTitle>
+        <CardTitle className='ta-c' tag='h4'>{widgetDetail.title}</CardTitle>
         <Settings size={18} className='cursor-pointer' onClick={() => onClickSetting()} />
       </CardHeader>
       <CardBody>
